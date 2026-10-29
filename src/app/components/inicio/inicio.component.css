@@ -1,0 +1,54 @@
+.inicio {
+    padding: 30px;
+  }
+  
+  .banner {
+    background-color: #f5e6e8;
+    padding: 60px 20px;
+    text-align: center;
+    border-radius: 10px;
+  }
+  
+  .banner h1 {
+    color: #7a4f55;
+    font-size: 36px;
+    margin-bottom: 10px;
+  }
+  
+  .banner p {
+    color: #666;
+    font-size: 18px;
+  }
+  
+  .opcoes {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 40px;
+  }
+  
+  .card {
+    width: 250px;
+    padding: 25px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  .card h2 {
+    color: #7a4f55;
+  }
+  
+  .card p {
+    color: #666;
+  }
+  
+  .card a {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 15px;
+    background-color: #7a4f55;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+  }

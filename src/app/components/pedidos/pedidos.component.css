@@ -1,0 +1,35 @@
+.pagina {
+    padding: 20px;
+  }
+  
+  h2 {
+    color: #7a4f55;
+    font-size: 30px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 25px;
+  }
+  
+  th,
+  td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+  }
+  
+  th {
+    background-color: #f5e6e8;
+    color: #7a4f55;
+  }
+  
+  button {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #7a4f55;
+    color: white;
+  }

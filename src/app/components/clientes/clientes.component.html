@@ -1,0 +1,31 @@
+<section class="pagina">
+
+    <h2>Clientes</h2>
+  
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Data de Nascimento</th>
+          <th>Sexo</th>
+          <th>E-mail</th>
+          <th>Telefone</th>
+          <th>Ativo</th>
+        </tr>
+      </thead>
+  
+      <tbody>
+        <tr *ngFor="let cliente of clientes">
+          <td>{{ cliente.idpessoa }}</td>
+          <td>{{ cliente.nome }}</td>
+          <td>{{ cliente.dataNascimento }}</td>
+          <td>{{ cliente.sexo }}</td>
+          <td>{{ cliente.email }}</td>
+          <td>{{ cliente.telefone }}</td>
+          <td>{{ cliente.ativoPessoa }}</td>
+        </tr>
+      </tbody>
+    </table>
+  
+  </section>

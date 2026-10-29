@@ -1,0 +1,36 @@
+<section class="pagina">
+
+    <h2>Produtos</h2>
+    <p>Produtos cadastrados na clínica.</p>
+  
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Produto</th>
+          <th>Descrição</th>
+          <th>Preço</th>
+          <th>Situação</th>
+        </tr>
+      </thead>
+  
+      <tbody>
+        <tr *ngFor="let produto of produtos">
+          <td>{{ produto.iditem }}</td>
+  
+          <td>{{ produto.item1 }}</td>
+  
+          <td>{{ produto.descricaoItem }}</td>
+  
+          <td>
+            R$ {{ produto.preco | number:'1.2-2' }}
+          </td>
+  
+          <td>
+            {{ produto.ativoProdutoServico === 'S' ? 'Ativo' : 'Inativo' }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+  </section>

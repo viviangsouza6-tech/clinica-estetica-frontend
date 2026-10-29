@@ -1,0 +1,47 @@
+.pagina {
+    padding: 20px;
+  }
+  
+  h2 {
+    color: #7a4f55;
+    font-size: 30px;
+  }
+  
+  .acoes {
+    display: flex;
+    gap: 10px;
+    margin: 25px 0;
+  }
+  
+  input {
+    padding: 10px;
+    width: 250px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #7a4f55;
+    color: white;
+    cursor: pointer;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th,
+  td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+  }
+  
+  th {
+    background-color: #f5e6e8;
+    color: #7a4f55;
+  }

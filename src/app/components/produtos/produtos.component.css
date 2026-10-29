@@ -1,0 +1,55 @@
+.pagina {
+    padding: 20px;
+  }
+  
+  h2 {
+    color: #7a4f55;
+    font-size: 30px;
+  }
+  
+  .acoes {
+    margin: 25px 0;
+    display: flex;
+    gap: 10px;
+  }
+  
+  input {
+    padding: 10px;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #7a4f55;
+    color: white;
+  }
+  
+  .novo {
+    background-color: #557a5a;
+  }
+  
+  .desativar {
+    background-color: #a94c4c;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th,
+  td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #f5e6e8;
+    color: #7a4f55;
+  }
