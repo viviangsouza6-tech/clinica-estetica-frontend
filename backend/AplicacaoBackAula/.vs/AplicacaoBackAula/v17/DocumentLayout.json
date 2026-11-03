@@ -1,0 +1,218 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\DEV  full steck QPR-210.001\\AplicacaoBackAula\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{41EDB8BF-048D-4835-AC8D-553424FDCB55}|AplicacaoBackAula\\AplicacaoBackAula.csproj|e:\\dev  full steck qpr-210.001\\aplicacaobackaula\\aplicacaobackaula\\controllers\\itemcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41EDB8BF-048D-4835-AC8D-553424FDCB55}|AplicacaoBackAula\\AplicacaoBackAula.csproj|solutionrelative:aplicacaobackaula\\controllers\\itemcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41EDB8BF-048D-4835-AC8D-553424FDCB55}|AplicacaoBackAula\\AplicacaoBackAula.csproj|e:\\dev  full steck qpr-210.001\\aplicacaobackaula\\aplicacaobackaula\\models\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41EDB8BF-048D-4835-AC8D-553424FDCB55}|AplicacaoBackAula\\AplicacaoBackAula.csproj|solutionrelative:aplicacaobackaula\\models\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41EDB8BF-048D-4835-AC8D-553424FDCB55}|AplicacaoBackAula\\AplicacaoBackAula.csproj|E:\\DEV  full steck QPR-210.001\\AplicacaoBackAula\\aplicacaobackaula\\dto\\atendimentodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41EDB8BF-048D-4835-AC8D-553424FDCB55}|AplicacaoBackAula\\AplicacaoBackAula.csproj|solutionrelative:aplicacaobackaula\\dto\\atendimentodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41EDB8BF-048D-4835-AC8D-553424FDCB55}|AplicacaoBackAula\\AplicacaoBackAula.csproj|e:\\dev  full steck qpr-210.001\\aplicacaobackaula\\aplicacaobackaula\\aplicacaobackaula.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{41EDB8BF-048D-4835-AC8D-553424FDCB55}|AplicacaoBackAula\\AplicacaoBackAula.csproj|solutionrelative:aplicacaobackaula\\aplicacaobackaula.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41EDB8BF-048D-4835-AC8D-553424FDCB55}|AplicacaoBackAula\\AplicacaoBackAula.csproj|E:\\DEV  full steck QPR-210.001\\AplicacaoBackAula\\aplicacaobackaula\\controllers\\entradaprodutocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41EDB8BF-048D-4835-AC8D-553424FDCB55}|AplicacaoBackAula\\AplicacaoBackAula.csproj|solutionrelative:aplicacaobackaula\\controllers\\entradaprodutocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41EDB8BF-048D-4835-AC8D-553424FDCB55}|AplicacaoBackAula\\AplicacaoBackAula.csproj|e:\\dev  full steck qpr-210.001\\aplicacaobackaula\\aplicacaobackaula\\dto\\enderecodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41EDB8BF-048D-4835-AC8D-553424FDCB55}|AplicacaoBackAula\\AplicacaoBackAula.csproj|solutionrelative:aplicacaobackaula\\dto\\enderecodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41EDB8BF-048D-4835-AC8D-553424FDCB55}|AplicacaoBackAula\\AplicacaoBackAula.csproj|E:\\DEV  full steck QPR-210.001\\AplicacaoBackAula\\aplicacaobackaula\\controllers\\funcionariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41EDB8BF-048D-4835-AC8D-553424FDCB55}|AplicacaoBackAula\\AplicacaoBackAula.csproj|solutionrelative:aplicacaobackaula\\controllers\\funcionariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41EDB8BF-048D-4835-AC8D-553424FDCB55}|AplicacaoBackAula\\AplicacaoBackAula.csproj|E:\\DEV  full steck QPR-210.001\\AplicacaoBackAula\\aplicacaobackaula\\models\\estoque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41EDB8BF-048D-4835-AC8D-553424FDCB55}|AplicacaoBackAula\\AplicacaoBackAula.csproj|solutionrelative:aplicacaobackaula\\models\\estoque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41EDB8BF-048D-4835-AC8D-553424FDCB55}|AplicacaoBackAula\\AplicacaoBackAula.csproj|E:\\DEV  full steck QPR-210.001\\AplicacaoBackAula\\aplicacaobackaula\\dto\\atendimentoitemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41EDB8BF-048D-4835-AC8D-553424FDCB55}|AplicacaoBackAula\\AplicacaoBackAula.csproj|solutionrelative:aplicacaobackaula\\dto\\atendimentoitemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41EDB8BF-048D-4835-AC8D-553424FDCB55}|AplicacaoBackAula\\AplicacaoBackAula.csproj|E:\\DEV  full steck QPR-210.001\\AplicacaoBackAula\\aplicacaobackaula\\dto\\entradaprodutodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41EDB8BF-048D-4835-AC8D-553424FDCB55}|AplicacaoBackAula\\AplicacaoBackAula.csproj|solutionrelative:aplicacaobackaula\\dto\\entradaprodutodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41EDB8BF-048D-4835-AC8D-553424FDCB55}|AplicacaoBackAula\\AplicacaoBackAula.csproj|E:\\DEV  full steck QPR-210.001\\AplicacaoBackAula\\aplicacaobackaula\\models\\endereco.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41EDB8BF-048D-4835-AC8D-553424FDCB55}|AplicacaoBackAula\\AplicacaoBackAula.csproj|solutionrelative:aplicacaobackaula\\models\\endereco.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41EDB8BF-048D-4835-AC8D-553424FDCB55}|AplicacaoBackAula\\AplicacaoBackAula.csproj|E:\\DEV  full steck QPR-210.001\\AplicacaoBackAula\\aplicacaobackaula\\dto\\funcionariodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41EDB8BF-048D-4835-AC8D-553424FDCB55}|AplicacaoBackAula\\AplicacaoBackAula.csproj|solutionrelative:aplicacaobackaula\\dto\\funcionariodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Item.cs",
+              "DocumentMoniker": "E:\\DEV  full steck QPR-210.001\\AplicacaoBackAula\\AplicacaoBackAula\\Models\\Item.cs",
+              "RelativeDocumentMoniker": "AplicacaoBackAula\\Models\\Item.cs",
+              "ToolTip": "E:\\DEV  full steck QPR-210.001\\AplicacaoBackAula\\AplicacaoBackAula\\Models\\Item.cs",
+              "RelativeToolTip": "AplicacaoBackAula\\Models\\Item.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-03T18:31:18.491Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AplicacaoBackAula",
+              "DocumentMoniker": "E:\\DEV  full steck QPR-210.001\\AplicacaoBackAula\\AplicacaoBackAula\\AplicacaoBackAula.csproj",
+              "RelativeDocumentMoniker": "AplicacaoBackAula\\AplicacaoBackAula.csproj",
+              "ToolTip": "E:\\DEV  full steck QPR-210.001\\AplicacaoBackAula\\AplicacaoBackAula\\AplicacaoBackAula.csproj",
+              "RelativeToolTip": "AplicacaoBackAula\\AplicacaoBackAula.csproj",
+              "ViewState": "AQIAAAEAAAAAAAAAAAAuwBsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-11-03T17:52:37.414Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ItemController.cs",
+              "DocumentMoniker": "E:\\DEV  full steck QPR-210.001\\AplicacaoBackAula\\AplicacaoBackAula\\Controllers\\ItemController.cs",
+              "RelativeDocumentMoniker": "AplicacaoBackAula\\Controllers\\ItemController.cs",
+              "ToolTip": "E:\\DEV  full steck QPR-210.001\\AplicacaoBackAula\\AplicacaoBackAula\\Controllers\\ItemController.cs",
+              "RelativeToolTip": "AplicacaoBackAula\\Controllers\\ItemController.cs",
+              "ViewState": "AQIAAD0AAAAAAAAAAAAUwD8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-03T17:48:13.617Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "EntradaProdutoController.cs",
+              "DocumentMoniker": "E:\\DEV  full steck QPR-210.001\\AplicacaoBackAula\\AplicacaoBackAula\\Controllers\\EntradaProdutoController.cs",
+              "RelativeDocumentMoniker": "AplicacaoBackAula\\Controllers\\EntradaProdutoController.cs",
+              "ToolTip": "E:\\DEV  full steck QPR-210.001\\AplicacaoBackAula\\AplicacaoBackAula\\Controllers\\EntradaProdutoController.cs",
+              "RelativeToolTip": "AplicacaoBackAula\\Controllers\\EntradaProdutoController.cs",
+              "ViewState": "AQIAANYAAAAAAAAAAAAIwOoAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-15T17:48:53.397Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "EnderecoDTO.cs",
+              "DocumentMoniker": "E:\\DEV  full steck QPR-210.001\\AplicacaoBackAula\\AplicacaoBackAula\\DTO\\EnderecoDTO.cs",
+              "RelativeDocumentMoniker": "AplicacaoBackAula\\DTO\\EnderecoDTO.cs",
+              "ToolTip": "E:\\DEV  full steck QPR-210.001\\AplicacaoBackAula\\AplicacaoBackAula\\DTO\\EnderecoDTO.cs",
+              "RelativeToolTip": "AplicacaoBackAula\\DTO\\EnderecoDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-15T17:06:31.006Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AtendimentoDTO.cs",
+              "DocumentMoniker": "E:\\DEV  full steck QPR-210.001\\AplicacaoBackAula\\AplicacaoBackAula\\DTO\\AtendimentoDTO.cs",
+              "RelativeDocumentMoniker": "AplicacaoBackAula\\DTO\\AtendimentoDTO.cs",
+              "ToolTip": "E:\\DEV  full steck QPR-210.001\\AplicacaoBackAula\\AplicacaoBackAula\\DTO\\AtendimentoDTO.cs",
+              "RelativeToolTip": "AplicacaoBackAula\\DTO\\AtendimentoDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-15T19:04:24.523Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "FuncionarioController.cs",
+              "DocumentMoniker": "E:\\DEV  full steck QPR-210.001\\AplicacaoBackAula\\AplicacaoBackAula\\Controllers\\FuncionarioController.cs",
+              "RelativeDocumentMoniker": "AplicacaoBackAula\\Controllers\\FuncionarioController.cs",
+              "ToolTip": "E:\\DEV  full steck QPR-210.001\\AplicacaoBackAula\\AplicacaoBackAula\\Controllers\\FuncionarioController.cs",
+              "RelativeToolTip": "AplicacaoBackAula\\Controllers\\FuncionarioController.cs",
+              "ViewState": "AQIAAEcAAAAAAAAAAAAwwF4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-15T16:50:06.846Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Estoque.cs",
+              "DocumentMoniker": "E:\\DEV  full steck QPR-210.001\\AplicacaoBackAula\\AplicacaoBackAula\\Models\\Estoque.cs",
+              "RelativeDocumentMoniker": "AplicacaoBackAula\\Models\\Estoque.cs",
+              "ToolTip": "E:\\DEV  full steck QPR-210.001\\AplicacaoBackAula\\AplicacaoBackAula\\Models\\Estoque.cs",
+              "RelativeToolTip": "AplicacaoBackAula\\Models\\Estoque.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-19T16:41:01.373Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AtendimentoItemDTO.cs",
+              "DocumentMoniker": "E:\\DEV  full steck QPR-210.001\\AplicacaoBackAula\\AplicacaoBackAula\\DTO\\AtendimentoItemDTO.cs",
+              "RelativeDocumentMoniker": "AplicacaoBackAula\\DTO\\AtendimentoItemDTO.cs",
+              "ToolTip": "E:\\DEV  full steck QPR-210.001\\AplicacaoBackAula\\AplicacaoBackAula\\DTO\\AtendimentoItemDTO.cs",
+              "RelativeToolTip": "AplicacaoBackAula\\DTO\\AtendimentoItemDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-15T19:02:52.504Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "EntradaProdutoDTO.cs",
+              "DocumentMoniker": "E:\\DEV  full steck QPR-210.001\\AplicacaoBackAula\\AplicacaoBackAula\\DTO\\EntradaProdutoDTO.cs",
+              "RelativeDocumentMoniker": "AplicacaoBackAula\\DTO\\EntradaProdutoDTO.cs",
+              "ToolTip": "E:\\DEV  full steck QPR-210.001\\AplicacaoBackAula\\AplicacaoBackAula\\DTO\\EntradaProdutoDTO.cs",
+              "RelativeToolTip": "AplicacaoBackAula\\DTO\\EntradaProdutoDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-15T17:47:33.786Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Endereco.cs",
+              "DocumentMoniker": "E:\\DEV  full steck QPR-210.001\\AplicacaoBackAula\\AplicacaoBackAula\\Models\\Endereco.cs",
+              "RelativeDocumentMoniker": "AplicacaoBackAula\\Models\\Endereco.cs",
+              "ToolTip": "E:\\DEV  full steck QPR-210.001\\AplicacaoBackAula\\AplicacaoBackAula\\Models\\Endereco.cs",
+              "RelativeToolTip": "AplicacaoBackAula\\Models\\Endereco.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-15T16:49:28.141Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "FuncionarioDTO.cs",
+              "DocumentMoniker": "E:\\DEV  full steck QPR-210.001\\AplicacaoBackAula\\AplicacaoBackAula\\DTO\\FuncionarioDTO.cs",
+              "RelativeDocumentMoniker": "AplicacaoBackAula\\DTO\\FuncionarioDTO.cs",
+              "ToolTip": "E:\\DEV  full steck QPR-210.001\\AplicacaoBackAula\\AplicacaoBackAula\\DTO\\FuncionarioDTO.cs",
+              "RelativeToolTip": "AplicacaoBackAula\\DTO\\FuncionarioDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-15T16:40:53.051Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

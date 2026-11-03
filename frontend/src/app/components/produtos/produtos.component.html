@@ -1,0 +1,90 @@
+<section class="pagina">
+
+  <h2>Produtos</h2>
+  <p>Cadastre e consulte os produtos da clínica.</p>
+
+  <form (ngSubmit)="salvarProduto()">
+
+    <div class="campo">
+      <label>Nome do Produto</label>
+      <input
+        type="text"
+        name="item1"
+        [(ngModel)]="novoProduto.item1"
+        placeholder="Digite o nome do produto"
+        required>
+    </div>
+
+    <div class="campo">
+      <label>Descrição</label>
+      <input
+        type="text"
+        name="descricaoItem"
+        [(ngModel)]="novoProduto.descricaoItem"
+        placeholder="Digite a descrição"
+        required>
+    </div>
+
+    <div class="campo">
+      <label>Categoria</label>
+      <select
+        name="idcategoria"
+        [(ngModel)]="novoProduto.idcategoria"
+        required>
+
+        <option [ngValue]="0">Selecione a categoria</option>
+        <option [ngValue]="1">Beleza</option>
+        <option [ngValue]="2">Estética</option>
+        <option [ngValue]="3">Bem-estar</option>
+        <option [ngValue]="4">Cuidados pessoais</option>
+
+      </select>
+    </div>
+
+    <div class="campo">
+      <label>Preço (R$)</label>
+      <input
+        type="number"
+        name="preco"
+        [(ngModel)]="novoProduto.preco"
+        placeholder="Digite o preço"
+        min="0.01"
+        step="0.01"
+        required>
+    </div>
+
+    <div class="acoes">
+      <button type="submit" class="novo">
+        Cadastrar Produto
+      </button>
+    </div>
+
+  </form>
+
+  <h2>Produtos Cadastrados</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Produto</th>
+        <th>Descrição</th>
+        <th>Preço</th>
+        <th>Situação</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let produto of produtos">
+        <td>{{ produto.iditem }}</td>
+        <td>{{ produto.item1 }}</td>
+        <td>{{ produto.descricaoItem }}</td>
+        <td>R$ {{ produto.preco | number:'1.2-2' }}</td>
+        <td>
+          {{ produto.ativoProdutoServico === 'S' ? 'Ativo' : 'Inativo' }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</section>
