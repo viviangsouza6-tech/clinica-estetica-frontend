@@ -39,6 +39,16 @@ public class EnderecoController : ControllerBase
     [HttpPost]
     public async Task<ActionResult<Endereco>> PostEndereco(Endereco endereco)
     {
+        var pessoaExiste = await _context.Pessoas
+            .AnyAsync(p => p.Idpessoa == endereco.Idpessoa);
+
+        if (!pessoaExiste)
+        {
+            return BadRequest("Pessoa não encontrada.");
+        }
+
+        endereco.IdpessoaNavigation = null;
+
         _context.Enderecos.Add(endereco);
 
         await _context.SaveChangesAsync();
@@ -52,14 +62,22 @@ public class EnderecoController : ControllerBase
 
     // PUT: api/Endereco/5
     [HttpPut("{id}")]
-    public async Task<IActionResult> PutEndereco(
-        int id,
-        Endereco endereco)
+    public async Task<IActionResult> PutEndereco(int id, Endereco endereco)
     {
         if (id != endereco.Idendereco)
         {
             return BadRequest();
         }
+
+        var pessoaExiste = await _context.Pessoas
+            .AnyAsync(p => p.Idpessoa == endereco.Idpessoa);
+
+        if (!pessoaExiste)
+        {
+            return BadRequest("Pessoa não encontrada.");
+        }
+
+        endereco.IdpessoaNavigation = null;
 
         _context.Entry(endereco).State = EntityState.Modified;
 

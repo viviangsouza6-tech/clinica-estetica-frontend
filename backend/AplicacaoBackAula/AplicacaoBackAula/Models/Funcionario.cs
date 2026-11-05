@@ -1,5 +1,7 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace AplicacaoBackAula.Models;
 
@@ -13,5 +15,6 @@ public partial class Funcionario
 
     public virtual ICollection<Atendimentoitem> Atendimentoitems { get; set; } = new List<Atendimentoitem>();
 
-    public virtual Pessoa IdpessoaNavigation { get; set; } = null!;
+    [ValidateNever]
+    public virtual Pessoa? IdpessoaNavigation { get; set; }
 }

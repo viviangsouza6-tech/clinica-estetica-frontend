@@ -545,7 +545,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "ItemController",
+    "ContainingType": "AplicacaoBackAula.Controllers.ItemController",
     "Method": "GetItens",
     "RelativePath": "api/Item",
     "HttpMethod": "GET",
@@ -565,7 +565,7 @@
     ]
   },
   {
-    "ContainingType": "ItemController",
+    "ContainingType": "AplicacaoBackAula.Controllers.ItemController",
     "Method": "PostItem",
     "RelativePath": "api/Item",
     "HttpMethod": "POST",
@@ -591,7 +591,7 @@
     ]
   },
   {
-    "ContainingType": "ItemController",
+    "ContainingType": "AplicacaoBackAula.Controllers.ItemController",
     "Method": "GetItem",
     "RelativePath": "api/Item/{id}",
     "HttpMethod": "GET",
@@ -617,7 +617,7 @@
     ]
   },
   {
-    "ContainingType": "ItemController",
+    "ContainingType": "AplicacaoBackAula.Controllers.ItemController",
     "Method": "PutItem",
     "RelativePath": "api/Item/{id}",
     "HttpMethod": "PUT",
@@ -638,7 +638,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "ItemController",
+    "ContainingType": "AplicacaoBackAula.Controllers.ItemController",
     "Method": "DeleteItem",
     "RelativePath": "api/Item/{id}",
     "HttpMethod": "DELETE",

@@ -4,8 +4,9 @@
     "\\bin",
     "\\Controllers",
     "\\DTO",
-    "\\Models"
+    "\\Models",
+    "\\Properties"
   ],
-  "SelectedNode": "\\Controllers\\ProdutoItemController.cs",
+  "SelectedNode": "\\Properties\\launchSettings.json",
   "PreviewInSolutionExplorer": false
 }

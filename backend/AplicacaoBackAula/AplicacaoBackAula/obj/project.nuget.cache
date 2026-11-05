@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8fU9uQP8DQkJ4weBi27qsuM3RZdh1e2e5/ODNlwzVY3MnZUuggIIbpEjU8vN6c/Cb+sffzIm27xTGqGcp3Tsgg==",
+  "dgSpecHash": "kmQx7/C25SUaglDv1OixJEjAVZP43yJ+Q+VPUtIPdaT5qXZdWGfMo/pOfIiKtTWvZZQ8QrEbtFUtiT85iYr9Mw==",
   "success": true,
-  "projectFilePath": "E:\\DEV  full steck QPR-210.001\\AplicacaoBackAula\\AplicacaoBackAula\\AplicacaoBackAula.csproj",
+  "projectFilePath": "E:\\DEV  full steck QPR-210.001\\clinica-estetica-frontend\\backend\\AplicacaoBackAula\\AplicacaoBackAula\\AplicacaoBackAula.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\tarde.cetafaju\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\tarde.cetafaju\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

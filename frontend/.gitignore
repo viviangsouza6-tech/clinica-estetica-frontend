@@ -40,3 +40,11 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Arquivos temporários do Visual Studio
+.vs/
+**/.vs/
+
+# Arquivos temporários de build
+**/bin/
+**/obj/

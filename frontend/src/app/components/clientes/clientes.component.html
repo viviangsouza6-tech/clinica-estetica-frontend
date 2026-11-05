@@ -1,31 +1,107 @@
 <section class="pagina">
 
-    <h2>Clientes</h2>
-  
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Nome</th>
-          <th>Data de Nascimento</th>
-          <th>Sexo</th>
-          <th>E-mail</th>
-          <th>Telefone</th>
-          <th>Ativo</th>
-        </tr>
-      </thead>
-  
-      <tbody>
-        <tr *ngFor="let cliente of clientes">
-          <td>{{ cliente.idpessoa }}</td>
-          <td>{{ cliente.nome }}</td>
-          <td>{{ cliente.dataNascimento }}</td>
-          <td>{{ cliente.sexo }}</td>
-          <td>{{ cliente.email }}</td>
-          <td>{{ cliente.telefone }}</td>
-          <td>{{ cliente.ativoPessoa }}</td>
-        </tr>
-      </tbody>
-    </table>
-  
-  </section>
+  <h2>Clientes</h2>
+  <p>Cadastre e consulte os clientes da clínica.</p>
+
+  <form (ngSubmit)="salvarCliente()">
+
+    <div class="campo">
+      <label>Nome</label>
+      <input
+        type="text"
+        name="nome"
+        [(ngModel)]="novoCliente.nome"
+        placeholder="Digite o nome"
+        required>
+    </div>
+
+    <div class="campo">
+      <label>Data de Nascimento</label>
+      <input
+        type="date"
+        name="dataNascimento"
+        [(ngModel)]="novoCliente.dataNascimento"
+        required>
+    </div>
+
+    <div class="campo">
+      <label>Sexo</label>
+      <input
+        type="text"
+        name="sexo"
+        [(ngModel)]="novoCliente.sexo"
+        placeholder="Digite o sexo"
+        required>
+    </div>
+
+    <div class="campo">
+      <label>E-mail</label>
+      <input
+        type="email"
+        name="email"
+        [(ngModel)]="novoCliente.email"
+        placeholder="Digite o e-mail"
+        required>
+    </div>
+
+    <div class="campo">
+      <label>Telefone</label>
+      <input
+        type="tel"
+        name="telefone"
+        [(ngModel)]="novoCliente.telefone"
+        placeholder="Digite o telefone"
+        required>
+    </div>
+
+    <div class="campo">
+      <label>Situação</label>
+      <select
+        name="ativoPessoa"
+        [(ngModel)]="novoCliente.ativoPessoa">
+
+        <option value="S">Ativo</option>
+        <option value="N">Inativo</option>
+
+      </select>
+    </div>
+
+    <div class="botoes">
+      <button type="submit">
+        Cadastrar Cliente
+      </button>
+    </div>
+
+  </form>
+
+  <h2>Clientes Cadastrados</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Data de Nascimento</th>
+        <th>Sexo</th>
+        <th>E-mail</th>
+        <th>Telefone</th>
+        <th>Ativo</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let cliente of clientes">
+        <td>{{ cliente.idpessoa }}</td>
+        <td>{{ cliente.nome }}</td>
+        <td>{{ cliente.dataNascimento }}</td>
+        <td>{{ cliente.sexo }}</td>
+        <td>{{ cliente.email }}</td>
+        <td>{{ cliente.telefone }}</td>
+        <td>
+          {{ cliente.ativoPessoa === 'S' ? 'Ativo' : 'Inativo' }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</section>
