@@ -1,1 +1,59 @@
-<p>atendimento works!</p>
+<div class="container">
+    <h2>Cadastro de Atendimento</h2>
+  
+    <form (ngSubmit)="salvarAtendimento()">
+  
+      <div>
+        <label for="pessoa">Cliente:</label>
+  
+        <select
+          id="pessoa"
+          name="idpessoa"
+          [(ngModel)]="atendimento.idpessoa"
+          required
+        >
+          <option [ngValue]="0">Selecione um cliente</option>
+  
+          <option
+            *ngFor="let pessoa of pessoas"
+            [ngValue]="pessoa.idpessoa"
+          >
+            {{ pessoa.nome }}
+          </option>
+        </select>
+      </div>
+  
+      <div>
+        <label for="data">Data do atendimento:</label>
+  
+        <input
+          type="date"
+          id="data"
+          name="dataAtendimento"
+          [(ngModel)]="atendimento.dataAtendimento"
+          required
+        >
+      </div>
+  
+      <div>
+        <label for="status">Status:</label>
+  
+        <select
+          id="status"
+          name="statusAtendimento"
+          [(ngModel)]="atendimento.statusAtendimento"
+          required
+        >
+          <option value="">Selecione o status</option>
+          <option value="Agendado">Agendado</option>
+          <option value="Concluído">Concluído</option>
+          <option value="Cancelado">Cancelado</option>
+        </select>
+      </div>
+  
+      <button type="submit">Cadastrar atendimento</button>
+  
+      <p>{{ mensagem }}</p>
+  
+    </form>
+  </div>

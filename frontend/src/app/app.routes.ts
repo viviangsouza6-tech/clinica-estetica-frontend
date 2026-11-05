@@ -8,6 +8,7 @@ import { CarrinhoComponent } from './components/carrinho/carrinho.component';
 import { PedidosComponent } from './components/pedidos/pedidos.component';
 import { EstoqueComponent } from './components/estoque/estoque.component';
 import { EntradaProdutosComponent } from './components/entrada-produtos/entrada-produtos.component';
+import { AtendimentoComponent } from './components/atendimento/atendimento.component';
 
 export const routes: Routes = [
   { path: '', component: InicioComponent },
@@ -17,5 +18,6 @@ export const routes: Routes = [
   { path: 'carrinho', component: CarrinhoComponent },
   { path: 'pedidos', component: PedidosComponent },
   { path: 'estoque', component: EstoqueComponent },
-  { path: 'entrada-produtos', component: EntradaProdutosComponent }
+  { path: 'entrada-produtos', component: EntradaProdutosComponent },
+  { path: 'atendimento', component: AtendimentoComponent }
 ];
