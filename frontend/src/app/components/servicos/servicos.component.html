@@ -1,49 +1,136 @@
+
 <section class="pagina">
-    <h2>Serviços</h2>
-    <p>Confira os serviços disponíveis na nossa clínica.</p>
-  
-    <div class="acoes">
-      <input type="text" placeholder="Pesquisar serviço">
-      <button>Pesquisar</button>
-      <button class="novo">Novo Serviço</button>
-    </div>
-  
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Serviço</th>
-          <th>Descrição</th>
-          <th>Preço</th>
-          <th>Situação</th>
-          <th>Ações</th>
-        </tr>
-      </thead>
-  
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>Limpeza de Pele</td>
-          <td>Limpeza e cuidados com a pele</td>
-          <td>R$ 80,00</td>
-          <td>Ativo</td>
-          <td>
-            <button>Editar</button>
-            <button class="desativar">Desativar</button>
-          </td>
-        </tr>
-  
-        <tr>
-          <td>2</td>
-          <td>Massagem Relaxante</td>
-          <td>Massagem corporal relaxante</td>
-          <td>R$ 100,00</td>
-          <td>Ativo</td>
-          <td>
-            <button>Editar</button>
-            <button class="desativar">Desativar</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
+
+  <h2>Serviços</h2>
+  <p>Confira os serviços disponíveis na nossa clínica.</p>
+
+  <div class="acoes">
+    <input
+      type="text"
+      placeholder="Pesquisar serviço"
+      [(ngModel)]="pesquisa"
+      (input)="pesquisarServico()"
+    >
+
+    <button type="button" (click)="pesquisarServico()">
+      Pesquisar
+    </button>
+
+    <button type="button" class="novo" (click)="novoServico()">
+      Novo Serviço
+    </button>
+  </div>
+
+  <div *ngIf="mostrarFormulario" class="formulario">
+
+    <h3>{{ idEmEdicao ? 'Editar Serviço' : 'Cadastrar Serviço' }}</h3>
+
+    <form (ngSubmit)="salvarServico()">
+
+      <label for="categoria">Categoria:</label>
+      <select
+        id="categoria"
+        name="idcategoria"
+        [(ngModel)]="formServico.idcategoria"
+        required
+      >
+        <option [ngValue]="0">Selecione uma categoria</option>
+
+        <option
+          *ngFor="let categoria of categorias"
+          [ngValue]="categoria.idcategoria"
+        >
+          {{ categoria.categoria }}
+        </option>
+      </select>
+
+      <label for="nome">Nome do serviço:</label>
+      <input
+        type="text"
+        id="nome"
+        name="item1"
+        [(ngModel)]="formServico.item1"
+        required
+      >
+
+      <label for="descricao">Descrição:</label>
+      <input
+        type="text"
+        id="descricao"
+        name="descricaoItem"
+        [(ngModel)]="formServico.descricaoItem"
+        required
+      >
+
+      <label for="preco">Preço:</label>
+      <input
+        type="number"
+        id="preco"
+        name="preco"
+        [(ngModel)]="formServico.preco"
+        min="0.01"
+        step="0.01"
+        required
+      >
+
+      <button type="submit">
+        {{ idEmEdicao ? 'Salvar Alterações' : 'Cadastrar Serviço' }}
+      </button>
+
+      <button type="button" (click)="cancelarFormulario()">
+        Cancelar
+      </button>
+
+    </form>
+  </div>
+
+  <p>{{ mensagem }}</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Serviço</th>
+        <th>Descrição</th>
+        <th>Preço</th>
+        <th>Situação</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let servico of servicosFiltrados">
+
+        <td>{{ servico.iditem }}</td>
+        <td>{{ servico.item1 }}</td>
+        <td>{{ servico.descricaoItem }}</td>
+        <td>{{ servico.preco | currency:'BRL' }}</td>
+
+        <td>
+          {{ servico.ativoProdutoServico === 'S' ? 'Ativo' : 'Inativo' }}
+        </td>
+
+        <td>
+          <button type="button" (click)="editarServico(servico)">
+            Editar
+          </button>
+
+          <button
+            type="button"
+            class="desativar"
+            *ngIf="servico.ativoProdutoServico === 'S'"
+            (click)="desativarServico(servico)"
+          >
+            Desativar
+          </button>
+
+        </td>
+      </tr>
+
+      <tr *ngIf="servicosFiltrados.length === 0">
+        <td colspan="6">Nenhum serviço encontrado.</td>
+      </tr>
+    </tbody>
+  </table>
+
+</section>

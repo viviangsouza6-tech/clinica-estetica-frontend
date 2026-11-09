@@ -1,55 +1,187 @@
+
 .pagina {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+}
+
+h2 {
+  color: #8b625d;
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.pagina > p {
+  color: #777;
+  margin-bottom: 20px;
+}
+
+/* Área de pesquisa e botão novo */
+.acoes {
+  margin: 25px 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+input,
+select {
+  padding: 12px 14px;
+  border: 1px solid #ded6d3;
+  border-radius: 8px;
+  outline: none;
+  font-size: 14px;
+  color: #555;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+
+.acoes input {
+  width: 300px;
+}
+
+input:focus,
+select:focus {
+  border-color: #b88980;
+  box-shadow: 0 0 0 3px rgba(184, 137, 128, 0.15);
+}
+
+/* Botões */
+button {
+  padding: 11px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #a97870;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #895d56;
+}
+
+.novo {
+  background-color: #64866a;
+}
+
+.novo:hover {
+  background-color: #4f6d54;
+}
+
+.desativar {
+  background-color: #b45d5d;
+  margin-left: 5px;
+}
+
+.desativar:hover {
+  background-color: #984747;
+}
+
+/* Formulário de cadastro e edição */
+.formulario {
+  margin: 25px 0;
+  padding: 25px;
+  background-color: #fcf8f7;
+  border: 1px solid #eee2df;
+  border-radius: 12px;
+}
+
+.formulario h3 {
+  color: #8b625d;
+  font-size: 21px;
+  margin-top: 0;
+  margin-bottom: 22px;
+}
+
+.formulario form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.formulario label {
+  color: #665653;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.formulario input,
+.formulario select {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.formulario button {
+  margin-top: 8px;
+}
+
+.formulario button[type="button"] {
+  background-color: #888;
+}
+
+.formulario button[type="button"]:hover {
+  background-color: #666;
+}
+
+/* Mensagens */
+.pagina > p:not(:first-of-type) {
+  color: #64866a;
+  font-weight: 600;
+}
+
+/* Tabela */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th,
+td {
+  padding: 14px 12px;
+  border-bottom: 1px solid #eee5e2;
+  text-align: left;
+  font-size: 14px;
+}
+
+th {
+  background-color: #f5e9e6;
+  color: #8b625d;
+  font-weight: 600;
+}
+
+tbody tr:hover {
+  background-color: #fcf8f7;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .pagina {
+    margin: 20px 12px;
     padding: 20px;
+    overflow-x: auto;
   }
-  
-  h2 {
-    color: #7a4f55;
-    font-size: 30px;
-  }
-  
+
   .acoes {
-    margin: 25px 0;
-    display: flex;
-    gap: 10px;
+    align-items: stretch;
   }
-  
-  input {
-    padding: 10px;
-    width: 300px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  button {
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: #7a4f55;
-    color: white;
-  }
-  
-  .novo {
-    background-color: #557a5a;
-  }
-  
-  .desativar {
-    background-color: #a94c4c;
-  }
-  
-  table {
+
+  .acoes input {
     width: 100%;
-    border-collapse: collapse;
   }
-  
-  th,
-  td {
-    padding: 12px;
-    border: 1px solid #ddd;
-    text-align: left;
+
+  table {
+    min-width: 750px;
   }
-  
-  th {
-    background-color: #f5e6e8;
-    color: #7a4f55;
+
+  .formulario {
+    padding: 18px;
   }
+}

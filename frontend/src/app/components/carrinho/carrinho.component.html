@@ -1,39 +1,135 @@
+
 <section class="pagina">
-    <h2>Meu Carrinho</h2>
-  
+
+  <h2>Meu Carrinho</h2>
+  <p>Escolha os produtos e serviços da nossa clínica.</p>
+
+  <h3 class="titulo-secao">Produtos e Serviços Disponíveis</h3>
+
+  <div class="produtos-container">
+
+    <div class="produto-card" *ngFor="let item of itensDisponiveis">
+
+      <div class="produto-info">
+        <span class="tipo">
+          {{ item.tipoItem === 'P' ? 'Produto' : 'Serviço' }}
+        </span>
+
+        <h3>{{ item.item1 }}</h3>
+
+        <p>{{ item.descricaoItem }}</p>
+
+        <strong>
+          {{ item.preco | currency:'BRL':'symbol':'1.2-2' }}
+        </strong>
+      </div>
+
+      <button
+        type="button"
+        class="adicionar"
+        (click)="adicionarItem(item)">
+        Adicionar ao carrinho
+      </button>
+
+    </div>
+
+    <p *ngIf="itensDisponiveis.length === 0" class="vazio">
+      Nenhum produto ou serviço disponível.
+    </p>
+
+  </div>
+
+  <h3 class="titulo-secao">Itens do Carrinho</h3>
+
+  <div class="tabela-container">
+
     <table>
       <thead>
         <tr>
           <th>Item</th>
+          <th>Tipo</th>
           <th>Preço</th>
           <th>Quantidade</th>
           <th>Subtotal</th>
           <th>Ação</th>
         </tr>
       </thead>
-  
+
       <tbody>
-        <tr>
-          <td>Produto de exemplo</td>
-          <td>R$ 50,00</td>
-  
-          <td class="quantidade">
-            <button>-</button>
-            <span>1</span>
-            <button>+</button>
-          </td>
-  
-          <td>R$ 50,00</td>
-  
+
+        <tr *ngFor="let item of carrinho">
+
+          <td>{{ item.nome }}</td>
+
           <td>
-            <button class="remover">Remover</button>
+            {{ item.tipoItem === 'P' ? 'Produto' : 'Serviço' }}
+          </td>
+
+          <td>
+            {{ item.preco | currency:'BRL':'symbol':'1.2-2' }}
+          </td>
+
+          <td>
+            <div class="quantidade">
+
+              <button
+                type="button"
+                (click)="diminuirQuantidade(item)">
+                -
+              </button>
+
+              <span>{{ item.quantidade }}</span>
+
+              <button
+                type="button"
+                (click)="aumentarQuantidade(item)">
+                +
+              </button>
+
+            </div>
+          </td>
+
+          <td>
+            {{ getSubtotal(item) | currency:'BRL':'symbol':'1.2-2' }}
+          </td>
+
+          <td>
+            <button
+              type="button"
+              class="remover"
+              (click)="removerItem(item.iditem)">
+              Remover
+            </button>
+          </td>
+
+        </tr>
+
+        <tr *ngIf="carrinho.length === 0">
+          <td colspan="6" class="vazio">
+            Seu carrinho está vazio.
           </td>
         </tr>
+
       </tbody>
     </table>
-  
-    <div class="resumo">
-      <h3>Total: R$ 50,00</h3>
-      <button class="confirmar">Confirmar Pedido</button>
-    </div>
-  </section>
+
+  </div>
+
+  <div class="resumo">
+
+    <p>Quantidade de itens: {{ quantidadeItens }}</p>
+
+    <h3>
+      Total: {{ total | currency:'BRL':'symbol':'1.2-2' }}
+    </h3>
+
+    <button
+      type="button"
+      class="confirmar"
+      (click)="confirmarPedido()">
+      Confirmar Pedido
+    </button>
+
+  </div>
+
+</section>

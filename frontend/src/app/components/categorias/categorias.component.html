@@ -1,0 +1,97 @@
+<div class="pagina">
+
+    <div class="cabecalho">
+      <div>
+        <h2>Categorias</h2>
+        <p>Gerencie as categorias cadastradas no sistema.</p>
+      </div>
+    </div>
+  
+    <div class="acoes">
+      <input
+        type="text"
+        placeholder="Pesquisar categoria..."
+        [(ngModel)]="pesquisa"
+        (input)="pesquisarCategoria()"
+      >
+  
+      <button class="btn-novo" (click)="novaCategoria()">
+        + Nova Categoria
+      </button>
+    </div>
+  
+    <div class="formulario" *ngIf="mostrarFormulario">
+  
+      <h3>
+        {{ idEdicao === null ? 'Cadastrar Categoria' : 'Editar Categoria' }}
+      </h3>
+  
+      <label for="categoria">Nome da categoria</label>
+  
+      <input
+        id="categoria"
+        type="text"
+        placeholder="Digite o nome da categoria"
+        [(ngModel)]="nomeCategoria"
+      >
+  
+      <div class="botoes-formulario">
+        <button class="btn-salvar" (click)="salvarCategoria()">
+          Salvar
+        </button>
+  
+        <button class="btn-cancelar" (click)="cancelarFormulario()">
+          Cancelar
+        </button>
+      </div>
+  
+    </div>
+  
+    <p class="mensagem" *ngIf="mensagem">
+      {{ mensagem }}
+    </p>
+  
+    <div class="tabela-container">
+  
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Categoria</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+  
+        <tbody>
+          <tr *ngFor="let categoria of categoriasFiltradas">
+            <td>{{ categoria.idcategoria }}</td>
+            <td>{{ categoria.categoria }}</td>
+  
+            <td class="acoes-tabela">
+              <button
+                class="btn-editar"
+                (click)="editarCategoria(categoria)"
+              >
+                Editar
+              </button>
+  
+              <button
+                class="btn-excluir"
+                (click)="excluirCategoria(categoria.idcategoria)"
+              >
+                Excluir
+              </button>
+            </td>
+          </tr>
+  
+          <tr *ngIf="categoriasFiltradas.length === 0">
+            <td colspan="3" class="vazio">
+              Nenhuma categoria encontrada.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  
+    </div>
+  
+  </div>

@@ -1,11 +1,50 @@
+
 <section class="pagina">
-    <h2>Estoque</h2>
-  
-    <div class="acoes">
-      <input type="number" placeholder="Digite o ID do item">
-      <button>Consultar</button>
-    </div>
-  
+
+  <h2>Estoque</h2>
+
+  <p class="descricao">
+    Consulte os produtos e acompanhe as quantidades disponíveis.
+  </p>
+
+  <div class="acoes">
+
+    <input
+      type="number"
+      name="idConsulta"
+      [(ngModel)]="idConsulta"
+      placeholder="Digite o ID do item"
+      min="1">
+
+    <button type="button" (click)="consultarEstoque()">
+      Consultar
+    </button>
+
+    <button
+      type="button"
+      class="limpar"
+      (click)="limparConsulta()">
+      Limpar
+    </button>
+
+    <button
+      type="button"
+      class="atualizar"
+      (click)="carregarEstoque()">
+      Atualizar
+    </button>
+
+  </div>
+
+  <p
+    class="mensagem"
+    [class.sucesso]="mensagem === 'Quantidade atualizada com sucesso!'"
+    *ngIf="mensagem">
+    {{ mensagem }}
+  </p>
+
+  <div class="tabela-container">
+
     <table>
       <thead>
         <tr>
@@ -15,24 +54,105 @@
           <th>Preço</th>
           <th>Preço de Venda</th>
           <th>Unidade</th>
-          <th>Categoria</th>
           <th>Quantidade</th>
           <th>Situação</th>
+          <th>Ações</th>
         </tr>
       </thead>
-  
+
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>Produto de exemplo</td>
-          <td>Descrição do produto</td>
-          <td>R$ 40,00</td>
-          <td>R$ 50,00</td>
-          <td>UN</td>
-          <td>Estética</td>
-          <td>10</td>
-          <td>Ativo</td>
+
+        <tr *ngFor="let estoque of estoquesFiltrados">
+
+          <td>{{ estoque.iditem }}</td>
+
+          <td>{{ estoque.item }}</td>
+
+          <td>{{ estoque.descricao }}</td>
+
+          <td>
+            {{ estoque.preco | currency:'BRL':'symbol':'1.2-2' }}
+          </td>
+
+          <td>
+            {{ estoque.precoVenda | currency:'BRL':'symbol':'1.2-2' }}
+          </td>
+
+          <td>{{ estoque.unidade }}</td>
+
+          <td>
+            <div *ngIf="idEditando === estoque.iditem; else mostrarQuantidade">
+              <input
+                class="input-quantidade"
+                type="number"
+                min="0"
+                step="1"
+                [(ngModel)]="quantidadeEdicao">
+            </div>
+
+            <ng-template #mostrarQuantidade>
+              <span
+                [class.quantidade-baixa]="estoque.quantidade <= 5"
+                [class.quantidade-normal]="estoque.quantidade > 5">
+                {{ estoque.quantidade }}
+              </span>
+            </ng-template>
+          </td>
+
+          <td>
+            <span
+              [class.ativo]="estoque.situacao === 'S'"
+              [class.inativo]="estoque.situacao !== 'S'">
+              {{ estoque.situacao === 'S' ? 'Ativo' : 'Inativo' }}
+            </span>
+          </td>
+
+          <td class="coluna-acoes">
+
+            <div *ngIf="idEditando === estoque.iditem; else botaoEditar">
+
+              <button
+                type="button"
+                class="salvar"
+                (click)="salvarEdicao(estoque)">
+                Salvar
+              </button>
+
+              <button
+                type="button"
+                class="cancelar"
+                (click)="cancelarEdicao()">
+                Cancelar
+              </button>
+
+            </div>
+
+            <ng-template #botaoEditar>
+              <button
+                type="button"
+                class="editar"
+                (click)="editarEstoque(estoque)">
+                Editar
+              </button>
+            </ng-template>
+
+          </td>
+
         </tr>
+
+        <tr *ngIf="estoquesFiltrados.length === 0 && !mensagem">
+          <td colspan="9" class="vazio">
+            Nenhum produto cadastrado no estoque.
+          </td>
+        </tr>
+
       </tbody>
     </table>
-  </section>
+
+  </div>
+
+  <div class="total-produtos">
+    Produtos encontrados: {{ estoquesFiltrados.length }}
+  </div>
+
+</section>

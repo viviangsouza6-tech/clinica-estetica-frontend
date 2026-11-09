@@ -1,9 +1,12 @@
+
 <section class="pagina">
 
   <h2>Clientes</h2>
   <p>Cadastre e consulte os clientes da clínica.</p>
 
   <form (ngSubmit)="salvarCliente()">
+
+    <h3>Dados pessoais</h3>
 
     <div class="campo">
       <label>Nome</label>
@@ -26,12 +29,14 @@
 
     <div class="campo">
       <label>Sexo</label>
-      <input
-        type="text"
+      <select
         name="sexo"
         [(ngModel)]="novoCliente.sexo"
-        placeholder="Digite o sexo"
         required>
+        <option value="" disabled>Selecione</option>
+        <option value="M">M</option>
+        <option value="F">F</option>
+      </select>
     </div>
 
     <div class="campo">
@@ -59,49 +64,126 @@
       <select
         name="ativoPessoa"
         [(ngModel)]="novoCliente.ativoPessoa">
-
         <option value="S">Ativo</option>
         <option value="N">Inativo</option>
-
       </select>
+    </div>
+
+    <h3>Endereço</h3>
+
+    <div class="campo">
+      <label>CEP</label>
+      <input
+        type="text"
+        name="cep"
+        [(ngModel)]="novoCliente.cep"
+        placeholder="Digite o CEP"
+        required>
+    </div>
+
+    <div class="campo">
+      <label>Número</label>
+      <input
+        type="text"
+        name="numero"
+        [(ngModel)]="novoCliente.numero"
+        placeholder="Número da residência"
+        required>
+    </div>
+
+    <div class="campo">
+      <label>Complemento</label>
+      <input
+        type="text"
+        name="complemento"
+        [(ngModel)]="novoCliente.complemento"
+        placeholder="Apartamento, bloco, casa...">
     </div>
 
     <div class="botoes">
       <button type="submit">
-        Cadastrar Cliente
+        {{ idEdicao === null ? 'Cadastrar Cliente' : 'Salvar Alterações' }}
+      </button>
+
+      <button
+        type="button"
+        class="limpar"
+        (click)="limparFormulario()">
+        {{ idEdicao === null ? 'Limpar' : 'Cancelar Edição' }}
       </button>
     </div>
 
   </form>
 
-  <h2>Clientes Cadastrados</h2>
+  <h2 class="titulo-tabela">Clientes Cadastrados</h2>
 
-  <table>
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Nome</th>
-        <th>Data de Nascimento</th>
-        <th>Sexo</th>
-        <th>E-mail</th>
-        <th>Telefone</th>
-        <th>Ativo</th>
-      </tr>
-    </thead>
+  <div class="tabela-container">
 
-    <tbody>
-      <tr *ngFor="let cliente of clientes">
-        <td>{{ cliente.idpessoa }}</td>
-        <td>{{ cliente.nome }}</td>
-        <td>{{ cliente.dataNascimento }}</td>
-        <td>{{ cliente.sexo }}</td>
-        <td>{{ cliente.email }}</td>
-        <td>{{ cliente.telefone }}</td>
-        <td>
-          {{ cliente.ativoPessoa === 'S' ? 'Ativo' : 'Inativo' }}
-        </td>
-      </tr>
-    </tbody>
-  </table>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Data de Nascimento</th>
+          <th>Sexo</th>
+          <th>E-mail</th>
+          <th>Telefone</th>
+          <th>CEP</th>
+          <th>Número</th>
+          <th>Complemento</th>
+          <th>Ativo</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let cliente of clientes">
+
+          <td>{{ cliente.idpessoa }}</td>
+          <td>{{ cliente.nome }}</td>
+          <td>{{ cliente.dataNascimento | date:'dd/MM/yyyy' }}</td>
+          <td>{{ cliente.sexo }}</td>
+          <td>{{ cliente.email }}</td>
+          <td>{{ cliente.telefone }}</td>
+          <td>{{ cliente.cep }}</td>
+          <td>{{ cliente.numero }}</td>
+          <td>{{ cliente.complemento }}</td>
+
+          <td>
+            <span
+              [class.ativo]="cliente.ativoPessoa === 'S'"
+              [class.inativo]="cliente.ativoPessoa !== 'S'">
+              {{ cliente.ativoPessoa === 'S' ? 'Ativo' : 'Inativo' }}
+            </span>
+          </td>
+
+          <td class="acoes-tabela">
+            <button
+              type="button"
+              class="btn-editar"
+              (click)="editarCliente(cliente)">
+              Editar
+            </button>
+
+            <button
+              type="button"
+              class="btn-excluir"
+              (click)="excluirCliente(cliente.idpessoa)">
+              Excluir
+            </button>
+          </td>
+
+        </tr>
+
+        <tr *ngIf="clientes.length === 0">
+          <td colspan="11" class="vazio">
+            Nenhum cliente cadastrado.
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+
+  </div>
 
 </section>

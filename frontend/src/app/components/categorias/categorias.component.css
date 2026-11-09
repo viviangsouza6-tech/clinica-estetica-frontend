@@ -1,0 +1,159 @@
+.pagina {
+    padding: 20px;
+  }
+  
+  .cabecalho h2 {
+    color: #7a4f55;
+    font-size: 30px;
+    margin-bottom: 5px;
+  }
+  
+  .cabecalho p {
+    color: #777;
+    margin-top: 0;
+  }
+  
+  .acoes {
+    margin: 25px 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  
+  input {
+    padding: 11px;
+    width: 300px;
+    border: 1px solid #d8c4c6;
+    border-radius: 6px;
+    outline: none;
+    font-size: 14px;
+  }
+  
+  input:focus {
+    border-color: #9b6870;
+  }
+  
+  button {
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.2s;
+  }
+  
+  button:hover {
+    opacity: 0.85;
+  }
+  
+  .btn-novo,
+  .btn-salvar {
+    background-color: #8b5e65;
+    color: white;
+  }
+  
+  .formulario {
+    background: #fffafa;
+    border: 1px solid #eadbdd;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 25px;
+    max-width: 500px;
+  }
+  
+  .formulario h3 {
+    color: #7a4f55;
+    margin-top: 0;
+  }
+  
+  .formulario label {
+    display: block;
+    margin-bottom: 8px;
+    color: #65464b;
+    font-weight: bold;
+  }
+  
+  .formulario input {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .botoes-formulario {
+    display: flex;
+    gap: 10px;
+    margin-top: 18px;
+  }
+  
+  .btn-cancelar {
+    background: #ddd;
+    color: #333;
+  }
+  
+  .mensagem {
+    color: #7a4f55;
+    margin: 15px 0;
+  }
+  
+  .tabela-container {
+    background: white;
+    border-radius: 10px;
+    overflow-x: auto;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  thead {
+    background: #f3e6e8;
+  }
+  
+  th,
+  td {
+    padding: 14px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+  }
+  
+  th {
+    color: #70484e;
+  }
+  
+  td {
+    color: #555;
+  }
+  
+  .acoes-tabela {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .btn-editar {
+    background: #ead5d8;
+    color: #70484e;
+  }
+  
+  .btn-excluir {
+    background: #a94e59;
+    color: white;
+  }
+  
+  .vazio {
+    text-align: center;
+    padding: 25px;
+    color: #888;
+  }
+  
+  @media (max-width: 600px) {
+    .acoes {
+      flex-direction: column;
+    }
+  
+    .acoes input {
+      width: 100%;
+      box-sizing: border-box;
+    }
+  }
