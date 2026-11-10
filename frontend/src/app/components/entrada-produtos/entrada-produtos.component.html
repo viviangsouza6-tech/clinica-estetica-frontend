@@ -1,81 +1,98 @@
 
-<section class="pagina">
+<div class="pagina">
 
   <h2>Entrada de Produtos</h2>
 
-  <form (ngSubmit)="salvarEntrada()">
+  <div class="formulario">
+
+    <h3>Registrar nova entrada</h3>
 
     <div class="campo">
-      <label>Nome do Produto</label>
-      <input
-        type="text"
-        name="produto"
-        [(ngModel)]="novaEntrada.produto"
-        placeholder="Digite o nome do produto"
-        required>
+      <label>Produto</label>
+      <select [(ngModel)]="novaEntrada.iditem" name="iditem">
+        <option [ngValue]="null">Selecione um produto</option>
+
+        <option
+          *ngFor="let produto of produtosDisponiveis"
+          [ngValue]="produto.iditem">
+          {{ produto.item1 }}
+        </option>
+      </select>
     </div>
 
     <div class="campo">
-      <label>Data da Entrada</label>
+      <label>Data da entrada</label>
       <input
         type="date"
-        name="dataEntradaProduto"
         [(ngModel)]="novaEntrada.dataEntradaProduto"
-        required>
+        name="dataEntradaProduto">
     </div>
 
     <div class="campo">
       <label>Quantidade</label>
       <input
         type="number"
-        name="quantidadeEntrada"
-        [(ngModel)]="novaEntrada.quantidadeEntrada"
-        placeholder="Digite a quantidade"
         min="1"
-        required>
+        [(ngModel)]="novaEntrada.quantidadeEntrada"
+        name="quantidadeEntrada"
+        placeholder="Digite a quantidade">
     </div>
 
     <div class="campo">
-      <label>Valor Unitário (R$)</label>
+      <label>Valor unitário de entrada</label>
       <input
         type="number"
-        name="valorUnitarioEntrada"
-        [(ngModel)]="novaEntrada.valorUnitarioEntrada"
-        placeholder="Digite o valor unitário"
-        step="0.01"
         min="0.01"
-        required>
+        step="0.01"
+        [(ngModel)]="novaEntrada.valorUnitarioEntrada"
+        name="valorUnitarioEntrada"
+        placeholder="Digite o valor">
     </div>
 
     <div class="botoes">
-      <button type="submit">Salvar Entrada</button>
-      <button type="reset" class="limpar">Limpar</button>
+      <button type="button" class="btn-salvar" (click)="salvarEntrada()">
+        Salvar Entrada
+      </button>
+
+      <button type="button" class="btn-limpar" (click)="limparFormulario()">
+        Limpar
+      </button>
     </div>
 
-  </form>
+  </div>
 
-  <h2>Entradas Cadastradas</h2>
+  <div class="tabela-container">
 
-  <table>
-    <thead>
-      <tr>
-        <th>ID Entrada</th>
-        <th>Produto</th>
-        <th>Data</th>
-        <th>Quantidade</th>
-        <th>Valor Unitário</th>
-      </tr>
-    </thead>
+    <h3>Histórico de entradas</h3>
 
-    <tbody>
-      <tr *ngFor="let entrada of entradas">
-        <td>{{ entrada.identradaProduto }}</td>
-        <td>{{ entrada.produto || entrada.iditem }}</td>
-        <td>{{ entrada.dataEntradaProduto | date:'dd/MM/yyyy' }}</td>
-        <td>{{ entrada.quantidadeEntrada }}</td>
-        <td>R$ {{ entrada.valorUnitarioEntrada | number:'1.2-2' }}</td>
-      </tr>
-    </tbody>
-  </table>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Produto</th>
+          <th>Data</th>
+          <th>Quantidade</th>
+          <th>Valor unitário</th>
+        </tr>
+      </thead>
 
-</section>
+      <tbody>
+        <tr *ngFor="let entrada of entradas">
+          <td>{{ entrada.identradaProduto }}</td>
+          <td>{{ nomeProduto(entrada.iditem) }}</td>
+          <td>{{ entrada.dataEntradaProduto | date:'dd/MM/yyyy' }}</td>
+          <td>{{ entrada.quantidadeEntrada }}</td>
+          <td>
+            R$ {{ entrada.valorUnitarioEntrada | number:'1.2-2' }}
+          </td>
+        </tr>
+
+        <tr *ngIf="entradas.length === 0">
+          <td colspan="5">Nenhuma entrada cadastrada.</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+</div>

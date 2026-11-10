@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -78,12 +79,12 @@ export class CategoriasComponent implements OnInit {
       return;
     }
 
-    const dados = {
-      idcategoria: this.idEdicao ?? 0,
-      categoria: this.nomeCategoria.trim()
-    };
-
     if (this.idEdicao === null) {
+
+      const dados = {
+        categoria: this.nomeCategoria.trim()
+      };
+
       this.http.post(this.api, dados).subscribe({
         next: () => {
           this.mensagem = 'Categoria cadastrada com sucesso!';
@@ -92,11 +93,19 @@ export class CategoriasComponent implements OnInit {
         },
         error: (erro) => {
           console.error('Erro ao cadastrar:', erro);
+          console.error('Detalhes:', erro.error);
           this.mensagem = 'Erro ao cadastrar categoria.';
         }
       });
+
     } else {
-      this.http.put(`${this.api}/${this.idEdicao}`, dados).subscribe({
+
+      const dadosEdicao = {
+        idcategoria: this.idEdicao,
+        categoria: this.nomeCategoria.trim()
+      };
+
+      this.http.put(`${this.api}/${this.idEdicao}`, dadosEdicao).subscribe({
         next: () => {
           this.mensagem = 'Categoria atualizada com sucesso!';
           this.cancelarFormulario();

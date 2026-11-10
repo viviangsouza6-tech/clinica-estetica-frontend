@@ -14,73 +14,184 @@ import { FormsModule } from '@angular/forms';
 export class ProdutosComponent implements OnInit {
 
   produtos: any[] = [];
+  categorias: any[] = [];
 
-  novoProduto = {
+  idEditando: number | null = null;
+
+  apiUrl = 'https://localhost:7061/api/Item';
+  categoriaUrl = 'https://localhost:7061/api/Categorium';
+
+  situacaoProduto = 'S';
+
+  novoProduto: any = {
     item1: '',
     descricaoItem: '',
-    idcategoria: 0,
-    preco: 0
+    idcategoria: null,
+    preco: null
   };
-
-  private apiUrl = 'https://localhost:7061/api/Item';
 
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
     this.listarProdutos();
+    this.listarCategorias();
   }
 
-  listarProdutos(): void {
-    this.http.get<any[]>(this.apiUrl).subscribe({
+  // LISTAR CATEGORIAS
+  listarCategorias(): void {
+    this.http.get<any[]>(this.categoriaUrl).subscribe({
       next: (dados) => {
-        this.produtos = dados.filter(
-          item => item.tipoItem === 'P'
-        );
+        this.categorias = dados;
+        console.log('Categorias carregadas:', dados);
       },
       error: (erro) => {
-        console.error('Erro ao buscar produtos:', erro);
+        console.error('Erro ao carregar categorias:', erro);
+        alert('Não foi possível carregar as categorias.');
       }
     });
   }
 
+  // LISTAR PRODUTOS
+  listarProdutos(): void {
+    this.http.get<any[]>(this.apiUrl).subscribe({
+      next: (dados) => {
+        console.log('Produtos carregados:', dados);
+
+        this.produtos = dados.filter(item =>
+          item.tipoItem?.trim().toUpperCase() === 'P' &&
+          item.ativoProdutoServico?.trim().toUpperCase() === 'S'
+        );
+      },
+      error: (erro) => {
+        console.error('Erro ao listar produtos:', erro);
+        alert('Não foi possível carregar os produtos.');
+      }
+    });
+  }
+
+  // CADASTRAR E EDITAR PRODUTO
   salvarProduto(): void {
 
     if (
-      !this.novoProduto.item1.trim() ||
-      !this.novoProduto.descricaoItem.trim() ||
-      this.novoProduto.idcategoria === 0 ||
-      this.novoProduto.preco <= 0
+      !this.novoProduto.item1?.trim() ||
+      this.novoProduto.idcategoria == null ||
+      this.novoProduto.preco == null
     ) {
-      alert('Preencha todos os campos corretamente.');
+      alert('Preencha os campos obrigatórios.');
       return;
     }
 
     const dadosProduto = {
-      item1: this.novoProduto.item1,
+      iditem: this.idEditando ?? 0,
+      item1: this.novoProduto.item1.trim(),
       descricaoItem: this.novoProduto.descricaoItem,
-      idcategoria: this.novoProduto.idcategoria,
-      preco: this.novoProduto.preco,
+      idcategoria: Number(this.novoProduto.idcategoria),
+      preco: Number(this.novoProduto.preco),
       tipoItem: 'P',
-      ativoProdutoServico: 'S'
+      ativoProdutoServico: this.situacaoProduto
     };
 
-    this.http.post(this.apiUrl, dadosProduto).subscribe({
-      next: () => {
-        alert('Produto cadastrado com sucesso!');
+    if (this.idEditando !== null) {
 
-        this.listarProdutos();
+      this.http.put(
+        `${this.apiUrl}/${this.idEditando}`,
+        dadosProduto
+      ).subscribe({
+        next: () => {
+          alert('Produto atualizado com sucesso!');
+          this.limparFormulario();
+          this.listarProdutos();
+        },
+        error: (erro) => {
+          console.error('Erro ao atualizar produto:', erro);
+          alert('Erro ao atualizar produto.');
+        }
+      });
 
-        this.novoProduto = {
-          item1: '',
-          descricaoItem: '',
-          idcategoria: 0,
-          preco: 0
-        };
+    } else {
+
+      this.http.post(this.apiUrl, dadosProduto).subscribe({
+        next: () => {
+          alert('Produto cadastrado com sucesso!');
+          this.limparFormulario();
+          this.listarProdutos();
+        },
+        error: (erro) => {
+          console.error('Erro ao cadastrar produto:', erro);
+          alert('Erro ao cadastrar produto.');
+        }
+      });
+
+    }
+  }
+
+  // EDITAR PRODUTO
+  editarProduto(produto: any): void {
+
+    this.idEditando = produto.iditem;
+
+    this.novoProduto = {
+      item1: produto.item1,
+      descricaoItem: produto.descricaoItem,
+      idcategoria: produto.idcategoria,
+      preco: produto.preco
+    };
+
+    this.situacaoProduto = produto.ativoProdutoServico;
+  }
+
+  // EXCLUIR PRODUTO
+  excluirProduto(produto: any): void {
+
+    const id = Number(produto.iditem);
+
+    console.log('1 - Produto selecionado:', produto);
+    console.log('2 - ID do produto:', id);
+
+    if (!id) {
+      alert('ID do produto inválido!');
+      return;
+    }
+
+    this.http.delete(`${this.apiUrl}/${id}`).subscribe({
+
+      next: (resposta) => {
+
+        console.log('3 - DELETE realizado:', resposta);
+
+        this.produtos = this.produtos.filter(
+          p => Number(p.iditem) !== id
+        );
+
+        alert('Produto excluído com sucesso!');
       },
+
       error: (erro) => {
-        console.error('Erro ao cadastrar produto:', erro);
-        alert('Erro ao cadastrar produto: ' + JSON.stringify(erro.error));
+
+        console.error('3 - ERRO NO DELETE:', erro);
+
+        alert('Erro ao excluir produto. Status: ' + erro.status);
       }
+
     });
+  }
+
+  // LIMPAR FORMULÁRIO
+  limparFormulario(): void {
+
+    this.idEditando = null;
+    this.situacaoProduto = 'S';
+
+    this.novoProduto = {
+      item1: '',
+      descricaoItem: '',
+      idcategoria: null,
+      preco: null
+    };
+  }
+
+  // CANCELAR EDIÇÃO
+  cancelarEdicao(): void {
+    this.limparFormulario();
   }
 }

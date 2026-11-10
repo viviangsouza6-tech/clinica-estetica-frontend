@@ -13,20 +13,19 @@ import { FormsModule } from '@angular/forms';
 })
 export class EntradaProdutosComponent implements OnInit {
 
-  entradas: any[] = [];
-  produtos: any[] = [];
+  apiUrl = 'https://localhost:7061/api/EntradaProduto';
+  itemUrl = 'https://localhost:7061/api/Item';
 
-  novaEntrada = {
-    produto: '',
-    iditem: 0,
-    identradaProduto: 0,
+  entradas: any[] = [];
+  todosItens: any[] = [];
+  produtosDisponiveis: any[] = [];
+
+  novaEntrada: any = {
+    iditem: null,
     dataEntradaProduto: '',
     quantidadeEntrada: 0,
     valorUnitarioEntrada: 0
   };
-
-  private apiUrl = 'https://localhost:7061/api/EntradaProduto';
-  private apiItemUrl = 'https://localhost:7061/api/Item';
 
   constructor(private http: HttpClient) {}
 
@@ -41,26 +40,37 @@ export class EntradaProdutosComponent implements OnInit {
         this.entradas = dados;
       },
       error: (erro) => {
-        console.error('Erro ao buscar entradas:', erro);
+        console.error('Erro ao carregar entradas:', erro);
+        alert('Erro ao carregar entradas.');
       }
     });
   }
 
   listarProdutos(): void {
-    this.http.get<any[]>(this.apiItemUrl).subscribe({
+    this.http.get<any[]>(this.itemUrl).subscribe({
       next: (dados) => {
-        this.produtos = dados.filter(item => item.tipoItem === 'P');
+        this.todosItens = dados;
+
+        this.produtosDisponiveis = dados.filter(item =>
+          item.tipoItem === 'P' &&
+          item.ativoProdutoServico === 'S'
+        );
       },
       error: (erro) => {
-        console.error('Erro ao buscar produtos:', erro);
+        console.error('Erro ao carregar produtos:', erro);
+        alert('Erro ao carregar produtos.');
       }
     });
   }
 
-  salvarEntrada(): void {
+  nomeProduto(iditem: number): string {
+    const produto = this.todosItens.find(item => item.iditem === iditem);
+    return produto ? produto.item1 : 'Produto não encontrado';
+  }
 
+  salvarEntrada(): void {
     if (
-      !this.novaEntrada.produto.trim() ||
+      !this.novaEntrada.iditem ||
       !this.novaEntrada.dataEntradaProduto ||
       this.novaEntrada.quantidadeEntrada <= 0 ||
       this.novaEntrada.valorUnitarioEntrada <= 0
@@ -69,43 +79,33 @@ export class EntradaProdutosComponent implements OnInit {
       return;
     }
 
-    const produtoEncontrado = this.produtos.find(
-      item => item.item1?.toLowerCase() ===
-      this.novaEntrada.produto.trim().toLowerCase()
-    );
-
-    if (!produtoEncontrado) {
-      alert('Produto não encontrado. Cadastre primeiro na tela de Produtos.');
-      return;
-    }
-
     const dadosEntrada = {
-      identradaProduto: 0,
-      iditem: produtoEncontrado.iditem,
+      iditem: Number(this.novaEntrada.iditem),
       dataEntradaProduto: this.novaEntrada.dataEntradaProduto,
-      quantidadeEntrada: this.novaEntrada.quantidadeEntrada,
-      unidade: produtoEncontrado.unidade || 'UN',
-      valorUnitarioEntrada: this.novaEntrada.valorUnitarioEntrada
+      quantidadeEntrada: Number(this.novaEntrada.quantidadeEntrada),
+      valorUnitarioEntrada: Number(this.novaEntrada.valorUnitarioEntrada)
     };
 
+    console.log('Dados enviados:', dadosEntrada);
     this.http.post(this.apiUrl, dadosEntrada).subscribe({
       next: () => {
         alert('Entrada cadastrada com sucesso!');
+        this.limparFormulario();
         this.listarEntradas();
-
-        this.novaEntrada = {
-          produto: '',
-          iditem: 0,
-          identradaProduto: 0,
-          dataEntradaProduto: '',
-          quantidadeEntrada: 0,
-          valorUnitarioEntrada: 0
-        };
       },
       error: (erro) => {
         console.error('Erro ao cadastrar entrada:', erro);
-        alert('Erro ao cadastrar entrada: ' + JSON.stringify(erro.error));
+        alert('Erro ao cadastrar entrada. Verifique o console e o backend.');
       }
     });
+  }
+
+  limparFormulario(): void {
+    this.novaEntrada = {
+      iditem: null,
+      dataEntradaProduto: '',
+      quantidadeEntrada: 0,
+      valorUnitarioEntrada: 0
+    };
   }
 }

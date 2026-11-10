@@ -1,67 +1,196 @@
 
 .pagina {
-  max-width: 700px;
-  margin: auto;
-  padding: 20px;
+  padding: 35px;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: #453638;
+  font-family: Arial, sans-serif;
 }
 
-h2 {
-  color: #7a4f55;
-  font-size: 30px;
-  margin-bottom: 20px;
+/* Títulos */
+.pagina h2 {
+  color: #854f5b;
+  font-size: 25px;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
+.pagina h2:not(:first-child) {
+  margin-top: 40px;
+}
+
+/* Formulário */
+form {
+  background: #fff;
+  padding: 30px;
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(100, 55, 65, 0.09);
+  border: 1px solid #f0e2e5;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
 }
 
 .campo {
-  margin-bottom: 15px;
-}
-
-label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-
-input {
-  width: 100%;
-  padding: 10px;
-  box-sizing: border-box;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.botoes {
   display: flex;
-  gap: 10px;
-  margin-top: 25px;
+  flex-direction: column;
+  gap: 9px;
 }
 
-button {
-  padding: 10px 20px;
+.campo label {
+  color: #70464f;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.campo input,
+.campo select {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid #e5d5d9;
+  border-radius: 8px;
+  background: #fffafa;
+  color: #453638;
+  font-size: 14px;
+  outline: none;
+  transition: 0.2s;
+  box-sizing: border-box;
+}
+
+.campo input:focus,
+.campo select:focus {
+  border-color: #a96878;
+  box-shadow: 0 0 0 3px rgba(169, 104, 120, 0.12);
+  background: #fff;
+}
+
+.campo input::placeholder {
+  color: #b5a2a6;
+}
+
+.campo select:disabled {
+  background: #f3eeee;
+  cursor: not-allowed;
+}
+
+/* Botões */
+.botoes {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.botoes button,
+.editar {
   border: none;
-  border-radius: 5px;
-  background-color: #557a5a;
-  color: white;
+  border-radius: 8px;
+  padding: 12px 22px;
+  font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
+  transition: 0.2s;
 }
 
-.limpar {
-  background-color: #777;
+.botoes button[type="submit"] {
+  background: #945968;
+  color: white;
+}
+
+.botoes button[type="submit"]:hover {
+  background: #784451;
+  transform: translateY(-1px);
+}
+
+.botoes .limpar {
+  background: #f2e6e9;
+  color: #784451;
+}
+
+.botoes .limpar:hover {
+  background: #e8d4da;
+}
+
+/* Tabela */
+.tabela-container {
+  width: 100%;
+  overflow-x: auto;
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(100, 55, 65, 0.08);
+  border: 1px solid #f0e2e5;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20px;
+  min-width: 650px;
 }
 
-th,
-td {
-  border: 1px solid #ddd;
-  padding: 10px;
-  text-align: center;
+thead {
+  background: #945968;
+  color: white;
 }
 
 th {
-  background-color: #7a4f55;
+  padding: 17px 15px;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+td {
+  padding: 16px 15px;
+  border-bottom: 1px solid #f1e8ea;
+  color: #59464a;
+  font-size: 14px;
+}
+
+tbody tr {
+  transition: background 0.2s;
+}
+
+tbody tr:hover {
+  background: #fff7f8;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Botão editar */
+.editar {
+  background: #f2e6e9;
+  color: #784451;
+  padding: 9px 17px;
+}
+
+.editar:hover {
+  background: #945968;
   color: white;
+}
+
+/* Responsividade */
+@media (max-width: 700px) {
+  .pagina {
+    padding: 18px;
+  }
+
+  form {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+
+  .botoes {
+    flex-direction: column;
+  }
+
+  .botoes button {
+    width: 100%;
+  }
+
+  .pagina h2 {
+    font-size: 22px;
+  }
 }
