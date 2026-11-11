@@ -75,9 +75,10 @@ export class ProdutosComponent implements OnInit {
     if (
       !this.novoProduto.item1?.trim() ||
       this.novoProduto.idcategoria == null ||
-      this.novoProduto.preco == null
+      this.novoProduto.preco == null ||
+      Number(this.novoProduto.preco) <= 0
     ) {
-      alert('Preencha os campos obrigatórios.');
+      alert('Preencha os campos obrigatórios corretamente.');
       return;
     }
 
@@ -104,21 +105,41 @@ export class ProdutosComponent implements OnInit {
         },
         error: (erro) => {
           console.error('Erro ao atualizar produto:', erro);
-          alert('Erro ao atualizar produto.');
+          console.log(
+            'Detalhes da API:',
+            JSON.stringify(erro.error, null, 2)
+          );
+
+          alert(
+            'Erro ao atualizar produto:\n' +
+            JSON.stringify(erro.error, null, 2)
+          );
         }
       });
 
     } else {
 
       this.http.post(this.apiUrl, dadosProduto).subscribe({
-        next: () => {
+        next: (resposta) => {
+          console.log('Produto cadastrado:', resposta);
+
           alert('Produto cadastrado com sucesso!');
+
           this.limparFormulario();
           this.listarProdutos();
         },
         error: (erro) => {
           console.error('Erro ao cadastrar produto:', erro);
-          alert('Erro ao cadastrar produto.');
+
+          console.log(
+            'DETALHES DA API:',
+            JSON.stringify(erro.error, null, 2)
+          );
+
+          alert(
+            'Erro ao cadastrar produto:\n' +
+            JSON.stringify(erro.error, null, 2)
+          );
         }
       });
 
@@ -170,7 +191,12 @@ export class ProdutosComponent implements OnInit {
 
         console.error('3 - ERRO NO DELETE:', erro);
 
-        alert('Erro ao excluir produto. Status: ' + erro.status);
+        alert(
+          'Erro ao excluir produto.\n' +
+          'Status: ' + erro.status +
+          '\nDetalhes: ' +
+          JSON.stringify(erro.error, null, 2)
+        );
       }
 
     });

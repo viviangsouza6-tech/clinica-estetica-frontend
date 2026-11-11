@@ -16,7 +16,6 @@
         </span>
 
         <h3>{{ item.item1 }}</h3>
-
         <p>{{ item.descricaoItem }}</p>
 
         <strong>
@@ -71,21 +70,15 @@
 
           <td>
             <div class="quantidade">
-
-              <button
-                type="button"
-                (click)="diminuirQuantidade(item)">
+              <button type="button" (click)="diminuirQuantidade(item)">
                 -
               </button>
 
               <span>{{ item.quantidade }}</span>
 
-              <button
-                type="button"
-                (click)="aumentarQuantidade(item)">
+              <button type="button" (click)="aumentarQuantidade(item)">
                 +
               </button>
-
             </div>
           </td>
 
@@ -123,11 +116,37 @@
       Total: {{ total | currency:'BRL':'symbol':'1.2-2' }}
     </h3>
 
+    <div class="campo-cliente">
+      <label for="cliente">Selecione o cliente:</label>
+
+      <select
+        id="cliente"
+        name="cliente"
+        [(ngModel)]="clienteSelecionado">
+
+        <option [ngValue]="null">
+          Escolha um cliente
+        </option>
+
+        <option
+          *ngFor="let cliente of clientes"
+          [ngValue]="cliente.idpessoa">
+
+          {{ cliente.nome }} - ID {{ cliente.idpessoa }}
+
+        </option>
+
+      </select>
+    </div>
+
     <button
       type="button"
       class="confirmar"
+      [disabled]="processandoPedido"
       (click)="confirmarPedido()">
-      Confirmar Pedido
+
+      {{ processandoPedido ? 'Finalizando...' : 'Confirmar Pedido' }}
+
     </button>
 
   </div>

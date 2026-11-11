@@ -1,54 +1,121 @@
+
 .inicio {
-    padding: 30px;
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 30px;
+  font-family: Arial, sans-serif;
+}
+
+.banner {
+  background-color: #f5e6e8;
+  padding: 45px 20px;
+  text-align: center;
+  border-radius: 12px;
+}
+
+.banner h1 {
+  color: #7a4f55;
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.banner p {
+  color: #666;
+  font-size: 16px;
+}
+
+.titulo-resumo,
+.titulo-opcoes {
+  color: #7a4f55;
+  margin: 35px 0 20px;
+  font-size: 23px;
+}
+
+.resumos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 20px;
+}
+
+.resumo-card {
+  background: #fff;
+  border: 1px solid #ead6da;
+  border-left: 5px solid #a66b76;
+  border-radius: 10px;
+  padding: 22px;
+  box-shadow: 0 3px 10px rgba(122, 79, 85, 0.08);
+}
+
+.resumo-card h3 {
+  color: #7a4f55;
+  font-size: 17px;
+  margin: 0 0 12px;
+}
+
+.resumo-card span {
+  color: #854f5b;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.resumo-card p {
+  color: #777;
+  font-size: 13px;
+  margin-bottom: 0;
+}
+
+.opcoes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  padding: 25px;
+  border: 1px solid #ead6da;
+  border-radius: 10px;
+  text-align: center;
+  background-color: white;
+  box-shadow: 0 3px 10px rgba(122, 79, 85, 0.06);
+}
+
+.card h2 {
+  color: #7a4f55;
+}
+
+.card p {
+  color: #666;
+  min-height: 40px;
+}
+
+.card a {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 15px;
+  background-color: #7a4f55;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.card a:hover {
+  background-color: #5f3b41;
+}
+
+.erro {
+  color: #a94444;
+  background: #fff0f0;
+  padding: 12px;
+  border-radius: 7px;
+}
+
+@media (max-width: 600px) {
+  .inicio {
+    padding: 15px;
   }
-  
-  .banner {
-    background-color: #f5e6e8;
-    padding: 60px 20px;
-    text-align: center;
-    border-radius: 10px;
-  }
-  
+
   .banner h1 {
-    color: #7a4f55;
-    font-size: 36px;
-    margin-bottom: 10px;
+    font-size: 25px;
   }
-  
-  .banner p {
-    color: #666;
-    font-size: 18px;
-  }
-  
-  .opcoes {
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    margin-top: 40px;
-  }
-  
-  .card {
-    width: 250px;
-    padding: 25px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    text-align: center;
-  }
-  
-  .card h2 {
-    color: #7a4f55;
-  }
-  
-  .card p {
-    color: #666;
-  }
-  
-  .card a {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 10px 15px;
-    background-color: #7a4f55;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-  }
+}

@@ -1,28 +1,26 @@
 
-:host {
-  display: block;
-  min-height: 100%;
-  background: #fcf7f7;
-}
-
 .pagina {
-  max-width: 1250px;
-  margin: 0 auto;
-  padding: 35px 30px;
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 30px;
+  font-family: Arial, sans-serif;
+  color: #453638;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgba(122, 79, 85, 0.10);
 }
 
-/* Cabeçalho */
+/* Título */
 h2 {
-  color: #70454d;
+  color: #854f5b;
   font-size: 30px;
   font-weight: 700;
-  margin: 0 0 8px;
-  letter-spacing: -0.5px;
+  margin-bottom: 10px;
 }
 
 .descricao {
-  color: #927d80;
-  font-size: 14px;
+  color: #887579;
+  font-size: 15px;
   margin-bottom: 30px;
 }
 
@@ -31,229 +29,175 @@ h2 {
   display: flex;
   align-items: center;
   gap: 12px;
+  margin: 25px 0;
   flex-wrap: wrap;
-  background: #ffffff;
-  padding: 20px;
-  border-radius: 14px;
-  border: 1px solid #f0e2e4;
-  box-shadow: 0 4px 15px rgba(112, 69, 77, 0.05);
-  margin-bottom: 25px;
 }
 
-.acoes input {
-  flex: 1;
-  min-width: 200px;
-  max-width: 300px;
-  height: 43px;
-  padding: 0 14px;
-  border: 1px solid #e8d5d8;
-  border-radius: 8px;
-  background: #fffafa;
-  color: #60434a;
+input {
+  padding: 12px 15px;
+  width: 260px;
+  border: 1px solid #d9bdc2;
+  border-radius: 7px;
   font-size: 14px;
+  background-color: #fffafa;
+  color: #453638;
   outline: none;
-  box-sizing: border-box;
+  transition: 0.3s;
 }
 
-.acoes input:focus,
-.input-quantidade:focus {
-  border-color: #a96f7a;
-  box-shadow: 0 0 0 3px rgba(169, 111, 122, 0.12);
+input:focus {
+  border-color: #a66b76;
+  box-shadow: 0 0 5px rgba(166, 107, 118, 0.25);
+}
+
+input::placeholder {
+  color: #a99599;
 }
 
 /* Botões */
 button {
+  padding: 12px 20px;
   border: none;
-  border-radius: 8px;
-  padding: 11px 17px;
-  font-size: 13px;
+  border-radius: 7px;
+  background-color: #854f5b;
+  color: white;
+  font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  transition: 0.2s ease;
+  transition: 0.3s;
 }
 
 button:hover {
+  background-color: #6e3e49;
   transform: translateY(-1px);
-  filter: brightness(0.96);
-}
-
-.acoes button {
-  height: 43px;
-}
-
-.acoes button:not(.limpar):not(.atualizar) {
-  background: #865760;
-  color: #fff;
 }
 
 .limpar {
-  background: #f1e8e9;
-  color: #76535a;
+  background-color: #999;
+}
+
+.limpar:hover {
+  background-color: #777;
 }
 
 .atualizar {
-  background: #e7eee8;
-  color: #50745a;
+  background-color: #718b70;
+}
+
+.atualizar:hover {
+  background-color: #587357;
+}
+
+/* Mensagem */
+.mensagem {
+  margin: 15px 0;
+  padding: 12px;
+  color: #a94444;
+  background-color: #fff0f0;
+  border-radius: 7px;
+  font-size: 14px;
 }
 
 /* Tabela */
 .tabela-container {
   width: 100%;
   overflow-x: auto;
-  background: #fff;
-  border: 1px solid #f0e2e4;
-  border-radius: 14px;
-  box-shadow: 0 5px 20px rgba(112, 69, 77, 0.06);
+  background-color: #fff;
+  border-radius: 10px;
+  border: 1px solid #f0e1e3;
 }
 
 table {
   width: 100%;
-  min-width: 1050px;
+  min-width: 950px;
   border-collapse: collapse;
 }
 
 thead {
-  background: #f7edef;
+  background-color: #f3e3e6;
 }
 
 th {
-  color: #754b54;
-  font-size: 12px;
+  padding: 16px 12px;
+  color: #784b54;
+  font-size: 13px;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.4px;
-  padding: 17px 13px;
+  text-align: center;
   white-space: nowrap;
 }
 
 td {
-  padding: 16px 13px;
-  color: #66565a;
-  font-size: 13px;
+  padding: 15px 12px;
+  border-bottom: 1px solid #f0e7e8;
+  color: #5b4b4e;
+  font-size: 14px;
   text-align: center;
-  border-bottom: 1px solid #f3ebec;
 }
 
-tbody tr:last-child td {
-  border-bottom: none;
+tbody tr {
+  transition: 0.2s;
 }
 
 tbody tr:hover {
-  background: #fff9fa;
+  background-color: #fff7f8;
 }
 
-tbody td:first-child {
-  color: #865760;
-  font-weight: 700;
-}
-
-/* Situação */
+/* Situação do produto */
 .ativo,
 .inativo {
   display: inline-block;
   padding: 6px 12px;
   border-radius: 20px;
-  font-size: 11px;
-  font-weight: 700;
+  font-size: 12px;
+  font-weight: bold;
 }
 
 .ativo {
-  background: #eaf3eb;
-  color: #47764f;
+  background-color: #e4f2e5;
+  color: #397443;
 }
 
 .inativo {
-  background: #f9eaea;
-  color: #a64e4e;
+  background-color: #f9e3e3;
+  color: #a94444;
 }
 
 /* Quantidade */
 .quantidade-normal {
-  color: #47764f;
-  font-size: 15px;
-  font-weight: 700;
+  color: #397443;
+  font-weight: bold;
 }
 
 .quantidade-baixa {
-  color: #bd6262;
-  font-size: 15px;
-  font-weight: 700;
-}
-
-.input-quantidade {
-  width: 85px;
-  height: 36px;
-  padding: 5px 8px;
-  border: 1px solid #d9b9bf;
-  border-radius: 7px;
-  background: #fffafa;
-  color: #70454d;
-  font-size: 14px;
-  font-weight: 700;
-  text-align: center;
-  outline: none;
-  box-sizing: border-box;
-}
-
-/* Botões da tabela */
-.coluna-acoes {
-  min-width: 165px;
-  white-space: nowrap;
-}
-
-.editar {
-  background: #865760;
-  color: white;
-}
-
-.salvar {
-  background: #527b5a;
-  color: white;
-  margin: 3px;
-}
-
-.cancelar {
-  background: #f0e8e9;
-  color: #76535a;
-  margin: 3px;
-}
-
-/* Mensagens */
-.mensagem {
-  color: #a64e4e;
-  font-size: 13px;
-  font-weight: 600;
-  margin: 15px 0;
-}
-
-.mensagem.sucesso {
-  color: #47764f;
-}
-
-/* Rodapé da tabela */
-.total-produtos {
-  margin-top: 18px;
-  padding: 15px 20px;
-  background: #fff;
-  border: 1px solid #f0e2e4;
-  border-radius: 10px;
-  color: #865760;
-  font-size: 13px;
-  font-weight: 700;
-  text-align: right;
+  color: #b04444;
+  font-weight: bold;
 }
 
 /* Tabela vazia */
 .vazio {
-  padding: 35px;
-  color: #a18c90;
+  padding: 30px;
+  color: #999;
   text-align: center;
+  font-size: 14px;
+}
+
+/* Total */
+.total-produtos {
+  margin-top: 20px;
+  padding: 15px;
+  text-align: right;
+  color: #854f5b;
+  font-size: 15px;
+  font-weight: bold;
+  background-color: #fcf5f6;
+  border-radius: 8px;
 }
 
 /* Responsividade */
-@media (max-width: 700px) {
+@media (max-width: 768px) {
   .pagina {
-    padding: 22px 14px;
+    margin: 10px;
+    padding: 18px;
   }
 
   h2 {
@@ -261,15 +205,13 @@ tbody td:first-child {
   }
 
   .acoes {
-    padding: 15px;
+    flex-direction: column;
+    align-items: stretch;
   }
 
-  .acoes input {
-    max-width: 100%;
+  input,
+  button {
     width: 100%;
-  }
-
-  .acoes button {
-    flex: 1;
+    box-sizing: border-box;
   }
 }

@@ -1,9 +1,52 @@
+
 <section class="inicio">
 
   <div class="banner">
-    <h1>Bem-vindo à Clínica de Estética</h1>
-    <p>Cuidado, beleza e bem-estar para você.</p>
+    <h1>Painel Administrativo</h1>
+    <p>Bem-vindo à Clínica de Estética. Acompanhe os dados da sua clínica.</p>
   </div>
+
+  <h2 class="titulo-resumo">Resumo da Clínica</h2>
+
+  <p class="erro" *ngIf="mensagemErro">
+    {{ mensagemErro }}
+  </p>
+
+  <div class="resumos">
+
+    <div class="resumo-card">
+      <h3>Clientes</h3>
+      <span>{{ totalClientes }}</span>
+      <p>Clientes cadastrados</p>
+    </div>
+
+    <div class="resumo-card">
+      <h3>Produtos</h3>
+      <span>{{ totalProdutos }}</span>
+      <p>Produtos cadastrados</p>
+    </div>
+
+    <div class="resumo-card">
+      <h3>Serviços</h3>
+      <span>{{ totalServicos }}</span>
+      <p>Serviços cadastrados</p>
+    </div>
+
+    <div class="resumo-card">
+      <h3>Pedidos</h3>
+      <span>{{ totalPedidos }}</span>
+      <p>Pedidos registrados</p>
+    </div>
+
+    <div class="resumo-card">
+      <h3>Estoque</h3>
+      <span>{{ totalEstoque }}</span>
+      <p>Unidades disponíveis</p>
+    </div>
+
+  </div>
+
+  <h2 class="titulo-opcoes">Acessar módulos</h2>
 
   <div class="opcoes">
 

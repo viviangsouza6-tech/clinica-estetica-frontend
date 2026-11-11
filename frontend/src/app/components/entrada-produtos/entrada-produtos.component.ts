@@ -20,6 +20,8 @@ export class EntradaProdutosComponent implements OnInit {
   todosItens: any[] = [];
   produtosDisponiveis: any[] = [];
 
+  salvando = false;
+
   novaEntrada: any = {
     iditem: null,
     dataEntradaProduto: '',
@@ -38,10 +40,11 @@ export class EntradaProdutosComponent implements OnInit {
     this.http.get<any[]>(this.apiUrl).subscribe({
       next: (dados) => {
         this.entradas = dados;
+        console.log('Entradas carregadas:', dados);
       },
       error: (erro) => {
         console.error('Erro ao carregar entradas:', erro);
-        alert('Erro ao carregar entradas.');
+        alert('Erro ao carregar entradas. Status: ' + erro.status);
       }
     });
   }
@@ -52,28 +55,39 @@ export class EntradaProdutosComponent implements OnInit {
         this.todosItens = dados;
 
         this.produtosDisponiveis = dados.filter(item =>
-          item.tipoItem === 'P' &&
-          item.ativoProdutoServico === 'S'
+          item.tipoItem?.trim().toUpperCase() === 'P' &&
+          item.ativoProdutoServico?.trim().toUpperCase() === 'S'
         );
+
+        console.log('Produtos disponíveis:', this.produtosDisponiveis);
       },
       error: (erro) => {
         console.error('Erro ao carregar produtos:', erro);
-        alert('Erro ao carregar produtos.');
+        alert('Erro ao carregar produtos. Status: ' + erro.status);
       }
     });
   }
 
   nomeProduto(iditem: number): string {
-    const produto = this.todosItens.find(item => item.iditem === iditem);
+    const produto = this.todosItens.find(
+      item => Number(item.iditem) === Number(iditem)
+    );
+
     return produto ? produto.item1 : 'Produto não encontrado';
   }
 
   salvarEntrada(): void {
+    console.log('Botão Salvar Entrada acionado!');
+
+    if (this.salvando) {
+      return;
+    }
+
     if (
       !this.novaEntrada.iditem ||
       !this.novaEntrada.dataEntradaProduto ||
-      this.novaEntrada.quantidadeEntrada <= 0 ||
-      this.novaEntrada.valorUnitarioEntrada <= 0
+      Number(this.novaEntrada.quantidadeEntrada) <= 0 ||
+      Number(this.novaEntrada.valorUnitarioEntrada) <= 0
     ) {
       alert('Preencha todos os campos corretamente.');
       return;
@@ -83,19 +97,36 @@ export class EntradaProdutosComponent implements OnInit {
       iditem: Number(this.novaEntrada.iditem),
       dataEntradaProduto: this.novaEntrada.dataEntradaProduto,
       quantidadeEntrada: Number(this.novaEntrada.quantidadeEntrada),
+      unidade: 'UN',
       valorUnitarioEntrada: Number(this.novaEntrada.valorUnitarioEntrada)
     };
 
-    console.log('Dados enviados:', dadosEntrada);
+    console.log('Dados enviados para a API:', dadosEntrada);
+
+    this.salvando = true;
+
     this.http.post(this.apiUrl, dadosEntrada).subscribe({
-      next: () => {
+      next: (resposta) => {
+        console.log('Entrada cadastrada:', resposta);
+
         alert('Entrada cadastrada com sucesso!');
+
         this.limparFormulario();
         this.listarEntradas();
+
+        this.salvando = false;
       },
       error: (erro) => {
         console.error('Erro ao cadastrar entrada:', erro);
-        alert('Erro ao cadastrar entrada. Verifique o console e o backend.');
+        console.error('Detalhes do erro:', erro.error);
+
+        alert(
+          'Erro ao cadastrar entrada.\n' +
+          'Status: ' + erro.status +
+          '\nDetalhes: ' + JSON.stringify(erro.error)
+        );
+
+        this.salvando = false;
       }
     });
   }

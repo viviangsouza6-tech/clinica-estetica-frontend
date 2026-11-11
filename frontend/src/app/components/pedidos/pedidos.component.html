@@ -1,6 +1,19 @@
+
 <section class="pagina">
-    <h2>Meus Pedidos</h2>
-  
+
+  <h2>Meus Pedidos</h2>
+
+  <div class="cabecalho">
+    <p>Consulte os pedidos realizados.</p>
+
+    <button type="button" (click)="listarPedidos()">
+      Atualizar Pedidos
+    </button>
+  </div>
+
+  <p *ngIf="carregando">Carregando pedidos...</p>
+
+  <div class="tabela-container">
     <table>
       <thead>
         <tr>
@@ -12,18 +25,76 @@
           <th>Ação</th>
         </tr>
       </thead>
-  
+
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>29/10/2026</td>
-          <td>Cliente de exemplo</td>
-          <td>R$ 150,00</td>
-          <td>Aberto</td>
+        <tr *ngFor="let pedido of pedidos">
+          <td>{{ pedido.idatendimento }}</td>
+          <td>{{ pedido.data | date:'dd/MM/yyyy' }}</td>
+          <td>{{ pedido.cliente }}</td>
+          <td>R$ {{ pedido.valorTotal | number:'1.2-2' }}</td>
+          <td>{{ pedido.situacao }}</td>
           <td>
-            <button>Ver Itens</button>
+            <button
+              type="button"
+              class="btn-ver"
+              (click)="verItens(pedido)">
+              Ver Itens
+            </button>
+          </td>
+        </tr>
+
+        <tr *ngIf="!carregando && pedidos.length === 0">
+          <td colspan="6" class="vazio">
+            Nenhum pedido encontrado.
           </td>
         </tr>
       </tbody>
     </table>
-  </section>
+  </div>
+
+  <div class="modal-fundo" *ngIf="mostrarItens">
+
+    <div class="modal">
+
+      <h3>Itens do Pedido #{{ pedidoSelecionado?.idatendimento }}</h3>
+
+      <p>
+        Cliente: {{ pedidoSelecionado?.cliente }}
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Produto</th>
+            <th>Quantidade</th>
+            <th>Valor Unitário</th>
+            <th>Subtotal</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let item of itensPedido">
+            <td>{{ item.produto }}</td>
+            <td>{{ item.quantidade }}</td>
+            <td>R$ {{ item.valorUnitario | number:'1.2-2' }}</td>
+            <td>R$ {{ item.subtotal | number:'1.2-2' }}</td>
+          </tr>
+
+          <tr *ngIf="itensPedido.length === 0">
+            <td colspan="4">Nenhum item encontrado.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 class="total">
+        Total: R$ {{ pedidoSelecionado?.valorTotal | number:'1.2-2' }}
+      </h3>
+
+      <button type="button" class="btn-fechar" (click)="fecharItens()">
+        Fechar
+      </button>
+
+    </div>
+  </div>
+
+</section>

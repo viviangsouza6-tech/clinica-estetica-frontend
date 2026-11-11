@@ -41,12 +41,14 @@ export class EstoqueComponent implements OnInit {
     this.carregarEstoque();
   }
 
+  // CARREGAR TODOS OS ESTOQUES
   carregarEstoque(): void {
     this.http.get<Estoque[]>(this.api).subscribe({
       next: (dados) => {
         this.estoques = dados;
         this.estoquesFiltrados = dados;
         this.mensagem = '';
+        this.idConsulta = '';
       },
       error: (erro) => {
         console.error('Erro ao carregar estoque:', erro);
@@ -59,7 +61,6 @@ export class EstoqueComponent implements OnInit {
   consultarEstoque(): void {
 
     if (!this.idConsulta.trim()) {
-      this.estoquesFiltrados = this.estoques;
       this.mensagem = 'Digite o ID do produto para consultar.';
       return;
     }
@@ -72,17 +73,17 @@ export class EstoqueComponent implements OnInit {
       return;
     }
 
-    const encontrado = this.estoques.find(
-      estoque => estoque.iditem === id
-    );
-
-    if (encontrado) {
-      this.estoquesFiltrados = [encontrado];
-      this.mensagem = '';
-    } else {
-      this.estoquesFiltrados = [];
-      this.mensagem = 'Nenhum produto encontrado com esse ID.';
-    }
+    this.http.get<Estoque>(`${this.api}/${id}`).subscribe({
+      next: (dados) => {
+        this.estoquesFiltrados = [dados];
+        this.mensagem = '';
+      },
+      error: (erro) => {
+        console.error('Erro ao consultar estoque:', erro);
+        this.estoquesFiltrados = [];
+        this.mensagem = 'Nenhum produto encontrado com esse ID.';
+      }
+    });
   }
 
   // LIMPAR CONSULTA

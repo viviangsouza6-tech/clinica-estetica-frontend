@@ -1,6 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
 interface Item {
@@ -20,10 +21,15 @@ interface ItemCarrinho {
   quantidade: number;
 }
 
+interface Cliente {
+  idpessoa: number;
+  nome: string;
+}
+
 @Component({
   selector: 'app-carrinho',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './carrinho.component.html',
   styleUrl: './carrinho.component.css'
 })
@@ -31,18 +37,24 @@ export class CarrinhoComponent implements OnInit {
 
   itensDisponiveis: Item[] = [];
   carrinho: ItemCarrinho[] = [];
+  clientes: Cliente[] = [];
 
-  private api = 'https://localhost:7061/api/Item';
+  clienteSelecionado: number | null = null;
+  processandoPedido = false;
+
+  private apiItem = 'https://localhost:7061/api/Item';
+  private apiPedido = 'https://localhost:7061/api/Pedido';
 
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
     this.carregarItens();
     this.carregarCarrinho();
+    this.carregarClientes();
   }
 
   carregarItens(): void {
-    this.http.get<Item[]>(this.api).subscribe({
+    this.http.get<Item[]>(this.apiItem).subscribe({
       next: (dados) => {
         this.itensDisponiveis = dados.filter(
           item => item.ativoProdutoServico === 'S'
@@ -50,7 +62,19 @@ export class CarrinhoComponent implements OnInit {
       },
       error: (erro) => {
         console.error('Erro ao carregar itens:', erro);
-        alert('Não foi possível carregar os produtos e serviços.');
+      }
+    });
+  }
+
+  carregarClientes(): void {
+    this.http.get<Cliente[]>(`${this.apiPedido}/clientes`).subscribe({
+      next: (dados) => {
+        console.log('CLIENTES RECEBIDOS:', dados);
+        this.clientes = dados;
+      },
+      error: (erro) => {
+        console.error('ERRO AO BUSCAR CLIENTES:', erro);
+        alert('Não foi possível carregar os clientes.');
       }
     });
   }
@@ -72,7 +96,7 @@ export class CarrinhoComponent implements OnInit {
 
   adicionarItem(item: Item): void {
     const existente = this.carrinho.find(
-      produto => produto.iditem === item.iditem
+      p => p.iditem === item.iditem
     );
 
     if (existente) {
@@ -135,8 +159,46 @@ export class CarrinhoComponent implements OnInit {
       return;
     }
 
-    alert(
-      'Carrinho pronto! O próximo passo será integrar a finalização com o cadastro de pedidos do backend.'
-    );
+    if (!this.clienteSelecionado) {
+      alert('Selecione um cliente.');
+      return;
+    }
+
+    const pedido = {
+      idpessoa: this.clienteSelecionado,
+      itens: this.carrinho.map(item => ({
+        iditem: item.iditem,
+        quantidade: item.quantidade
+      }))
+    };
+
+    this.processandoPedido = true;
+
+    this.http.post<any>(
+      `${this.apiPedido}/confirmar`,
+      pedido
+    ).subscribe({
+      next: (resposta) => {
+        alert(
+          `${resposta.mensagem}\nAtendimento: ${resposta.idatendimento}`
+        );
+
+        this.carrinho = [];
+        this.clienteSelecionado = null;
+        this.salvarCarrinho();
+        this.processandoPedido = false;
+      },
+      error: (erro) => {
+        console.error('Erro ao confirmar pedido:', erro);
+
+        alert(
+          erro.error?.mensagem ||
+          erro.error ||
+          'Erro ao finalizar pedido.'
+        );
+
+        this.processandoPedido = false;
+      }
+    });
   }
 }
